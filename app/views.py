@@ -19,7 +19,6 @@ def create_profile(request):
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-            messages.success(request, 'Profile Succesfully Created')
         return HttpResponseRedirect('/')
     else:
         form = ProfileForm()
@@ -32,13 +31,12 @@ def create_profile(request):
 def profile(request):
     current_user = request.user
     profile = Profile.objects.filter(user_id=current_user.id).first()
-    product = Product.objects.filter(id=current_user.id).all()
 
     if request.method == 'POST':
         form = ProfileForm(request.POST)
     else:
         form = ProfileForm()
-    return render(request, "all-temps/profile.html", {"profile": profile, "product": product})
+    return render(request, "all-temps/profile.html", {"profile": profile})
 
 
 
