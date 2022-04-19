@@ -58,4 +58,4 @@ def update_profile(request, id):
         "user":user,
         "profile":profile,
         }
-    return render(request, 'all-temps/update_prof.html', ctx)
+    return render(request, 'all-temps/update_profile.html', ctx)
