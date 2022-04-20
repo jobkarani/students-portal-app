@@ -1,0 +1,122 @@
+<style>
+    .navbar{
+        background-color: rgb(141, 141, 192);;
+    }
+    .menu{
+        background-color: rgb(141, 141, 192);;
+    }
+    .center{
+        position: relative;
+        left: 10%;
+        display: flex;
+    } 
+    
+    .end{
+        display: flex;
+        align-items: baseline;
+        position: relative;
+        left: 100%; 
+        margin-left: 5%;
+    } 
+    .end a:hover{
+        -ms-transform: scale(0.5); 
+        -webkit-transform: scale(0.5); 
+        transform: scale(0.5); 
+        background: none;
+    }
+    .in{
+        margin-right: 4%;
+    }
+    .reg{
+        margin-left: 4%;
+    }
+    .just{
+        margin-left: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .center  a {
+        font-size: larger;
+    } 
+    a {
+        font-size: large;
+    }
+    .center li{
+        margin-left: 25%;
+        font-weight: bolder;
+        margin-top: 5%;
+        height: 7vh;
+    }
+    .center li:hover{
+        border-bottom: 4px solid #000000;
+    }
+    
+   
+    .notify {
+    position: absolute;
+    top: -4px;
+    right: -10px;
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 12px;
+    line-height: 1;
+    text-align: center;
+    border-radius: 3rem;
+    color: #fff;
+    background-color: #000000;
+    }
+</style>
+
+
+<nav class="navbar navbar-expand-lg  fixed-top navi" style="border-bottom : inset; position: fixed;width: 100%;">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <div class="navbar-nav text-black">
+            <ul class="navbar-nav just me-auto mb-2 mb-lg-0">
+                
+                <div class="center">
+                    <li>
+                        <a class="nav-link active" style="color: #000000;" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" style="color: #000000;" href="/shop/">Upload</a>
+                    </li>
+                    <li>
+                        <a class="nav-link " aria-current="page" style="color: #000000;" href="/">View</a>
+                    </li>
+                    
+                </div>
+                
+                <div class="col-sm-6 col-md-6 end" >
+                    {% if user.is_authenticated %}
+                
+                    <ul class="navbar-nav nav-right">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" style="color: #000000;font-size: xx-large;">
+                        <i class="uil uil-user-circle"></i>
+                      </a>
+                      <div class="dropdown-menu menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'logout' %}?next=/">Logout</a>
+                        {% else %}
+                        <a class='nav-link in' style="color: #000000;font-size: large;" href="{% url 'login' %}">Login</a> ||
+                        <a class='nav-link reg' style="color: #000000;font-size: large;" href="/accounts/register">Register</a>
+                      </div>
+                      </li>
+                    </ul>
+                    {% endif %}
+                  </div>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Adding a search form  -->
+    <!--   -->
+    <!-- search form end -->
+</nav>
