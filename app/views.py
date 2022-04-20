@@ -12,14 +12,13 @@ def index(requests):
 @login_required(login_url="/accounts/login/")
 def create_profile(request):
     current_user = request.user
-    title = "Create Profile"
+    title = "CreateProfile"
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             profile = form.save(commit=False)
             profile.user = current_user
             profile.save()
-        return HttpResponseRedirect('/')
     else:
         form = ProfileForm()
     return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
@@ -36,7 +35,7 @@ def profile(request):
         form = ProfileForm(request.POST)
     else:
         form = ProfileForm()
-    return render(request, "all-temps/profile.html", {"profile": profile})
+    return render(request, "all-temps/profile.html", {"profile": profile, "form":form})
 
 
 

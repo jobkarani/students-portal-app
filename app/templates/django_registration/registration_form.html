@@ -6,9 +6,7 @@
 <div class="content mt-5">
   <div class="container">
     <div class="row">
-      {% if form.errors %}
-      <p>Some Information Might be Incorrect</p>
-      {% endif %}
+     
       <div class="col-md-6">
         <img class="sign" src="{%static 'images/reg.jpg' %}" alt=""style="width: 100%; ">
       </div>
@@ -24,7 +22,7 @@
             {% bootstrap_form form%}
   
             <div class="form-group text-center">
-              <button class="btn " type="submit" style="background: #41ec16;; color: #fff;">Sign Up</button>
+              <button class="btn"  type="submit" style="background: #41ec16;; color: #fff;">Sign Up</button>
             </div>
           </form>
           </div>

@@ -42,27 +42,13 @@
                         {%csrf_token%} {% bootstrap_form form%}
                         <input type="submit" class="btn btn-dark" value="Create Profile"/>
                     </form>
-                    {% include 'alerts.html'%}
                     <div class="guide">
-                        <p>You can now visit the site and shop. <a href="{% url 'index' %}" class="btn btn-light btn-block">Go to Home</a></p>
+                        <p>You can now visit the site and shop. <a href="{% url 'index' %}" class="btn btn-success btn-block">Go to Home</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div> -->
-
-<div class="container-full container">
-    <div class="row">
-        <h1 class="text-center">Welcome To <span>Sophias Kitchen</span></h1>
-        <h4 class="text-center">Lets start by <span>CREATING YOUR PROFILE</span></h4>
-        <br><br>
-
-        <div class="">
-            <form action="{%url 'create_profile'%}" method="post" enctype="multipart/form-data" class="create-profile">
-                {%csrf_token%} {% bootstrap_form form%}
-                <button class="btn" type="submit" style="background: #9C0646; color: #fff;" >Create Profile</button>
-            </form>
-        </div>
 </div>
+
 {% endblock %}
