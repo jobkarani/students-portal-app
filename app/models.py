@@ -25,7 +25,7 @@ class Semester(models.Model):
     creation_date           =   models.DateTimeField(auto_now=False, auto_now_add=True)
 
     def get_absolute_url(self):
-        return reverse('student_semesters:semester_list')
+        return reverse('semester_list')
 
     def __str__(self):
         return "%s Section-%s"%(self.class_name, self.section)
@@ -38,15 +38,11 @@ class Student(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    roll = models.IntegerField(unique=True)
+    regno = models.IntegerField(unique=True)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)
-    student_class = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    dob= models.DateField(default=date.today())
-    regno = models.DateField(auto_now_add=True, auto_now=False)
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
 
-    def get_absolute_url(self):
-        return reverse('students:student_create')
 
     def __str__(self):
         return self.name
@@ -55,14 +51,10 @@ class Student(models.Model):
 class Unit(models.Model):
     unit_name = models.CharField(max_length=100)
     unit_code = models.IntegerField()
-    unit_creation_date = models.DateTimeField(auto_now=False, auto_now_add=True)
-    unit_update_date = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __str__(self):
         return self.unit_name
     
-    def get_absolute_url(self):
-        return reverse('units:unit_list')
 
 
 

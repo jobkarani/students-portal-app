@@ -10,4 +10,6 @@ urlpatterns = [
     path('update_profile/<int:id>', views.update_profile, name='update_profile'),
     path('profile/', views.profile, name='profile'),
     path('accounts/profile/', views.profile, name='profile'),
+    path('createstudent/', views.createStudent, name='createStudent'),
+    
 ]
