@@ -50,7 +50,18 @@ class Student(models.Model):
     def __str__(self):
         return self.name
 
-class Results(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
-    grade = models.CharField(max_length=100)
+
+class Unit(models.Model):
+    unit_name = models.CharField(max_length=100)
+    unit_code = models.IntegerField()
+    unit_creation_date = models.DateTimeField(auto_now=False, auto_now_add=True)
+    unit_update_date = models.DateTimeField(auto_now=True, auto_now_add=False)
+
+    def __str__(self):
+        return self.unit_name
+    
+    def get_absolute_url(self):
+        return reverse('units:unit_list')
+
+
 
