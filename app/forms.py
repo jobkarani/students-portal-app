@@ -40,3 +40,12 @@ class StudentClassForm(ModelForm):
             'class_name_in_numeric':  forms.NumberInput(attrs={'class': 'form-control'}),
             'section':  forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+class UnitForm(ModelForm):
+    class Meta:
+        model = Unit
+        fields = ['unit_name', 'unit_code']
+        widgets = {
+            'unit_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'unit_code':  forms.NumberInput(attrs={'class': 'form-control'}),
+        }
