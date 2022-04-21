@@ -25,19 +25,19 @@ class StudentForm(forms.ModelForm):
             'roll'  :   forms.NumberInput(attrs={'class':'form-control'}),
             'email'  :   forms.EmailInput(attrs={'class':'form-control'}),
             'gender'  :   forms.Select(attrs={'class':'form-control'}),
-            'class'  :   forms.Select(attrs={'class':'form-control'}),
+            'semester'  :   forms.Select(attrs={'class':'form-control'}),
             'dob'  :   forms.DateInput(attrs={'class':'form-control'}),
         }
 
 
-class StudentClassForm(ModelForm):
+class SemesterForm(ModelForm):
     class Meta:
-        model = StudentClass
+        model = Semester
         exlude  =   'creation_date'
         fields = '__all__'
         widgets = {
-            'class_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'class_name_in_numeric':  forms.NumberInput(attrs={'class': 'form-control'}),
+            'semester_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'semester_name_in_numeric':  forms.NumberInput(attrs={'class': 'form-control'}),
             'section':  forms.TextInput(attrs={'class': 'form-control'}),
         }
 

@@ -111,91 +111,91 @@ class StudentDeleteView(LoginRequiredMixin, DeleteView):
         context['panel_name'] = 'Students'
         context['panel_title'] = 'Delete Student'
         return context
-class SubjectCreateView(LoginRequiredMixin, CreateView):
+class UnitCreateView(LoginRequiredMixin, CreateView):
     model = Unit
     form_class = UnitForm
     
     def get_context_data(self, **kwargs):
-        context = super(SubjectCreateView, self).get_context_data(**kwargs)
-        context['main_page_title'] = 'Subject Creation'
-        context['panel_name'] = 'Subjects'
-        context['panel_title'] = 'Add Subject'
+        context = super(UnitCreateView, self).get_context_data(**kwargs)
+        context['main_page_title'] = 'Unit Creation'
+        context['panel_name'] = 'Units'
+        context['panel_title'] = 'Add Unit'
         return context
 
-class SubjectListView(LoginRequiredMixin, ListView):
+class UnitListView(LoginRequiredMixin, ListView):
     model = Unit
     field_list = [
-        'Subject Name', 'Subject Code', 'Creation Date', 'Last Updated'
+        'Unit Name', 'Unit Code', 'Creation Date', 'Last Updated'
     ]
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['main_page_title'] = 'Manage Subjects'
-        context['panel_name']   =   'Subjects'
-        context['panel_title']  =   'View Subjects Info'
+        context['main_page_title'] = 'Manage Units'
+        context['panel_name']   =   'Units'
+        context['panel_title']  =   'View Units Info'
         context['field_list']   =   self.field_list
         return context
 
-class SubjectUpdateView(LoginRequiredMixin,UpdateView):
+class UnitUpdateView(LoginRequiredMixin,UpdateView):
     model = Unit
     template_name_suffix = '_form'
     form_class = UnitForm
-    success_url = reverse_lazy('subjects:subject_list')
+    success_url = reverse_lazy('units:unit_list')
 
-class SubjectDeleteView(LoginRequiredMixin, DeleteView):
+class UnitDeleteView(LoginRequiredMixin, DeleteView):
     model = Unit
     template_name_suffix = '_delete'
-    success_url = reverse_lazy('subjects:subject_list')
+    success_url = reverse_lazy('units:unit_list')
 
     
     def get_context_data(self, **kwargs):
-        context = super(SubjectDeleteView, self).get_context_data(**kwargs)
-        context['main_page_title'] = 'Subject Delete Confirmation'
-        context['panel_name'] = 'Subjects'
-        context['panel_title'] = 'Delete Subject'
+        context = super(UnitDeleteView, self).get_context_data(**kwargs)
+        context['main_page_title'] = 'Unit Delete Confirmation'
+        context['panel_name'] = 'Units'
+        context['panel_title'] = 'Delete Unit'
         return context
     
-class StudentClassCreateView(LoginRequiredMixin, CreateView):
-    model = StudentClass
-    form_class = StudentClassForm
+class SemesterCreateView(LoginRequiredMixin, CreateView):
+    model = Semester
+    form_class = SemesterForm
 
     
     def get_context_data(self, **kwargs):
-        context = super(StudentClassCreateView, self).get_context_data(**kwargs)
-        context['main_page_title'] = 'Add Student Class'
-        context['panel_name'] = 'Classes'
-        context['panel_title'] = 'Add Class'
+        context = super(SemesterCreateView, self).get_context_data(**kwargs)
+        context['main_page_title'] = 'Add Student Semester'
+        context['panel_name'] = 'Semesters'
+        context['panel_title'] = 'Add Semester'
         return context
 
-class StudentClassListView(LoginRequiredMixin, ListView):
-    model = StudentClass
+class SemesterListView(LoginRequiredMixin, ListView):
+    model = Semester
 
     field_list = [
-        'Class Name', 'Class Name In Numeric', 'Section', 'Creation Date'
+        'Semester Name', 'Semester Name In Numeric', 'Section', 'Creation Date'
     ]
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['main_page_title'] = 'Manage Classes'
-        context['panel_name']   =   'Classes'
-        context['panel_title']  =   'View Classes Info'
+        context['main_page_title'] = 'Manage Semesters'
+        context['panel_name']   =   'Semester'
+        context['panel_title']  =   'View Semester Info'
         context['field_list']   =   self.field_list
         return context
 
-class StudentClassUpdateView(LoginRequiredMixin, UpdateView):
-    model = StudentClass
-    form_class = StudentClassForm
+class SemesterUpdateView(LoginRequiredMixin, UpdateView):
+    model = Semester
+    form_class = SemesterForm
     template_name_suffix = '_form'
-    success_url = reverse_lazy('student_classes:class_list')
+    success_url = reverse_lazy('student_semesters:semester_list')
 
-class StudentClassDeleteView(LoginRequiredMixin, DeleteView):
-    model = StudentClass
+class SemesterDeleteView(LoginRequiredMixin, DeleteView):
+    model = Semester
     template_name_suffix = '_delete'
-    success_url = reverse_lazy('student_classes:class_list')
+    success_url = reverse_lazy('student_semesters:semester_list')
 
     def get_context_data(self, **kwargs):
-        context = super(StudentClassDeleteView, self).get_context_data(**kwargs)
-        context['main_page_title'] = 'Class Delete Confirmation'
-        context['panel_name'] = 'Classes'
-        context['panel_title'] = 'Delete Class'
+        context = super(SemesterDeleteView, self).get_context_data(**kwargs)
+        context['main_page_title'] = 'Semester Delete Confirmation'
+        context['panel_name'] = 'Semesters'
+        context['panel_title'] = 'Delete Semester'
         return context
 
