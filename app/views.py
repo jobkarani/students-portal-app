@@ -104,8 +104,12 @@ def createSem(request):
     return render(request, 'all-temps/sem_form.html', {"form":form})
 
 def viewSems(request):
-
-    return render(request, 'all-temps/semesters.html')
+    sems = Semester.objects.filter().all()
+    print(sems)
+    ctx ={
+        "sems":sems,
+    }
+    return render(request, 'all-temps/semesters.html',ctx)
 
 def createResults(request):
     if request.method == 'POST':
