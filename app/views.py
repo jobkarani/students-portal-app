@@ -99,6 +99,10 @@ def createSem(request):
     print(form)
     return render(request, 'all-temps/sem_form.html', {"form":form})
 
+def viewSems(request):
+
+    return render(request, 'all-temps/semesters.html')
+
 def createResults(request):
     if request.method == 'POST':
         form = ResultsForm(request.POST, request.FILES)
