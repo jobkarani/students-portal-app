@@ -46,84 +46,23 @@
   </style>
 </head>
 
-<body class="top-navbar-fixed">
-  <div class="main-wrapper">
-      
-      {% block content %}
-          <div class="content-wrapper">
-              <div class="content-container">
-          
-                  <div class="left-sidebar bg-black-300 box-shadow " style="background-color: rgb(141, 141, 192);; width: 20%;">
+<body>
+  {% include 'navbar.html' %}
+                  <div class="row">
+                  <div class="col-4" style="background-color: rgb(141, 141, 192); a">
                       <div class="sidebar-content">
-                          
-                          <!-- /.user-info -->
                           {% include 'sidenav.html' %}
-                          <!-- /.sidebar-nav -->
                       </div>
-                      <!-- /.sidebar-content -->
                   </div>
-          
-                  <div class="main-page">
-          
-                      <div class="container-fluid">
-                          <div class="row page-title-div">
-                              <div class="col-sm-6">
-                                  <h2 class="title">
-          
-                                      
-          
-                                  </h2>
-                              </div>
-                              <!-- /.col-sm-6 -->
-                          </div>
-                          <!-- /.row -->
-                          <div class="row breadcrumb-div">
-                              <div class="col-md-6">
-                                  <ul class="breadcrumb">
-                                      <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
-                                      
-          
-                                  </ul>
-                              </div>
-          
-                          </div>
-                          <!-- /.row -->
-          
-                      </div>
-                      <!-- /.container-fluid -->
-          
-                      <section class="section">
-                          <div class="container-fluid">
-          
-                              <div class="row">
-          
-                              </div>
-                              <!-- /.row -->
-          
-          
-                          </div>
-                          <!-- /.container-fluid -->
-                      </section>
-                      <!-- /.section -->
-          
+                  <div class="col-8">
+                    {% block content %}
+
+                    {% endblock %}
                   </div>
-                  <!-- /.main-page -->
+                </div>
+ 
           
-          
-              </div>
-              <!-- /.content-container -->
-          </div>
-          <!-- /.content-wrapper -->
-          {% include 'navbar.html' %}
-          
-  </div>
-  <!-- /.main-wrapper -->
-          
-   {% include 'footer.html' %}
-  
-  
-  {% endblock %}
+  {% include 'footer.html' %}
   
   </body>
-
 </html>

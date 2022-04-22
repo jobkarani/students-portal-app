@@ -54,7 +54,4 @@ class Unit(models.Model):
 
     def __str__(self):
         return self.unit_name
-    
-
-
 
