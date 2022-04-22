@@ -1,4 +1,7 @@
 <style>
+    .nav-header{
+        margin-bottom: 5%;
+    }
     a{
         text-decoration: none;
     }
@@ -8,10 +11,13 @@
     .has-children{
         margin-bottom: 5%;
     }
+    .has-children a{
+        color:#000000;
+    }
     .child-nav li{
         margin-bottom: 5%; 
     }
-    li a{
+    .child-nav li a{
         color:#733C3C;
     }
     li a:hover{
@@ -28,9 +34,6 @@
             <a href=""><i class="fa fa-users"></i> <span>Students</span> <i class="fa fa-angle-right arrow"></i></a>
             <ul class="child-nav">
                 <li><a href="{% url 'createStudent' %}"><i class="fa fa-bars"></i> <span>Add Students</span></a></li>
-                <li><a href="#"><i class="fa fa fa-server"></i> <span>View
-                            Students</span></a></li>
-    
             </ul>
         </li>
         <li class="has-children">
@@ -61,7 +64,7 @@
                         Results</span></a></li>
 
         </ul>
-    <li><a href="#"><i class="fa fa fa-server"></i> <span> Admin Change
+    <li class="has-children"><a href="#"><i class="fa fa fa-server"></i> <span> Admin Change
                 Password</span></a></li>
 
     </li>
