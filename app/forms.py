@@ -31,6 +31,9 @@ class SemesterForm(ModelForm):
 class UnitForm(ModelForm):
     class Meta:
         model = Unit
-        fields = ['unit_name', 'unit_code']
+        fields = ['unit_name', 'unit_code', 'semester']
         
-        
+class ResultsForm(ModelForm):
+    class Meta:
+        model = Results
+        fields = ['marks', 'unit', 'student', 'semester']      

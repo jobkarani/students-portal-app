@@ -72,3 +72,36 @@ def createStudent(request):
         form = StudentForm()
     print(form)
     return render(request, 'all-temps/student_form.html', {"form":form})
+
+def createUnit(request):
+    if request.method == 'POST':
+        form = UnitForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = UnitForm()
+    print(form)
+    return render(request, 'all-temps/unit_form.html', {"form":form})
+
+def createSem(request):
+    if request.method == 'POST':
+        form = SemesterForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = SemesterForm()
+    print(form)
+    return render(request, 'all-temps/sem_form.html', {"form":form})
+
+def createResults(request):
+    if request.method == 'POST':
+        form = ResultsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = ResultsForm()
+    print(form)
+    return render(request, 'all-temps/results_form.html', {"form":form})

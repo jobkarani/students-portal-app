@@ -19,16 +19,11 @@ class Profile(models.Model):
         return self.user.username
         
 class Semester(models.Model):
-    semester_name              =   models.CharField(max_length=100, help_text='Eg-one, two,three etc')
-    semester_name_in_numeric   =   models.IntegerField(help_text='Eg- 1,2,4,5 etc') 
-    section                 =   models.CharField(max_length=10, help_text='Eg- A,B,C etc')
-    creation_date           =   models.DateTimeField(auto_now=False, auto_now_add=True)
-
-    def get_absolute_url(self):
-        return reverse('semester_list')
+    semester_name   =   models.CharField(help_text='Eg- 1.1,2.2,4.1,5.2 etc', max_length=100) 
+    creation_date =   models.DateTimeField(auto_now=False, auto_now_add=True)
 
     def __str__(self):
-        return "%s Section-%s"%(self.class_name, self.section)
+        return self.semester_name
 
 class Student(models.Model):
     select_gender = (
@@ -38,11 +33,11 @@ class Student(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    regno = models.IntegerField(unique=True)
+    regno = models.CharField(max_length=100,unique=True)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
-
+    # unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -51,7 +46,18 @@ class Student(models.Model):
 class Unit(models.Model):
     unit_name = models.CharField(max_length=100)
     unit_code = models.IntegerField()
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.unit_name
+
+class Results(models.Model):
+    marks = models.CharField(max_length=100)
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.marks
 

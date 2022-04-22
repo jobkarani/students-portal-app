@@ -11,5 +11,7 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('accounts/profile/', views.profile, name='profile'),
     path('createstudent/', views.createStudent, name='createStudent'),
-    
+    path('createUnit/', views.createUnit, name='createUnit'),
+    path('createSem/', views.createSem, name='createSem'),
+    path('createResults/', views.createResults, name='createResults'),
 ]
