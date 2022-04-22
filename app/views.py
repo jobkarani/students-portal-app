@@ -111,6 +111,16 @@ def viewSems(request):
     }
     return render(request, 'all-temps/semesters.html',ctx)
 
+def removeSem(request, semester_id):
+    sem = Semester.objects.get(semester_id=semester_id)
+    sem.delete()
+    
+    print(sem)
+    ctx ={
+        "sem":sem,
+    }
+    return redirect('viewSems',ctx)
+
 def createResults(request):
     if request.method == 'POST':
         form = ResultsForm(request.POST, request.FILES)
