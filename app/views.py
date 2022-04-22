@@ -113,3 +113,7 @@ def createResults(request):
         form = ResultsForm()
     print(form)
     return render(request, 'all-temps/results_form.html', {"form":form})
+
+def viewResults(request):
+
+    return render(request, 'all-temps/results.html')
