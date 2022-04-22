@@ -84,6 +84,10 @@ def createUnit(request):
     print(form)
     return render(request, 'all-temps/unit_form.html', {"form":form})
 
+def viewUnits(request):
+
+    return render(request, 'all-temps/units.html')
+
 def createSem(request):
     if request.method == 'POST':
         form = SemesterForm(request.POST, request.FILES)

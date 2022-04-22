@@ -14,4 +14,5 @@ urlpatterns = [
     path('createUnit/', views.createUnit, name='createUnit'),
     path('createSem/', views.createSem, name='createSem'),
     path('createResults/', views.createResults, name='createResults'),
+    path('units/', views.viewUnits, name='viewUnits'),
 ]
