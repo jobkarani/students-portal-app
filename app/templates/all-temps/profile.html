@@ -32,13 +32,14 @@
                             </p>
                             <p>
 
-                                {% if profile.phone %}
+                            {% if profile.phone %}
                             <p> <span style="font: weight 900px; font-size:larger;"> Phone Number:
                                 </span>{{profile.phone}}</p>
                             {% else %}
                             <span class="badge rounded-pill bg-info text-white">No contact</span>
-                            {% endif %}
                             </p>
+                            {% endif %}
+
                             
                             <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
                                     {{ user.date_joined|date }} </span></h6>

@@ -85,8 +85,11 @@ def createUnit(request):
     return render(request, 'all-temps/unit_form.html', {"form":form})
 
 def viewUnits(request):
-
-    return render(request, 'all-temps/units.html')
+    units = Unit.objects.all()
+    ctx ={
+        "units":units,
+    }
+    return render(request, 'all-temps/units.html',ctx)
 
 def createSem(request):
     if request.method == 'POST':
