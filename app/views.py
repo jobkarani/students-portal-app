@@ -85,7 +85,8 @@ def createUnit(request):
     return render(request, 'all-temps/unit_form.html', {"form":form})
 
 def viewUnits(request):
-    units = Unit.objects.all()
+    units = Unit.objects.filter().all()
+    print(units)
     ctx ={
         "units":units,
     }

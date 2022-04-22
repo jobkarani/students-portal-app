@@ -10,25 +10,25 @@
                     <div class="text-center">
                         <div class="title"></div>
                         <div class="guide">
-                            These are your units.
+                            These are your registered units.
                         </div>
                         <hr />
 
                     </div>
                     <div class="row">
                         <div class="body col-6">
-                            {% if units.unit_code %}
+                            {% for units in units %}
                                 <p> <span style="font: weight 900px; font-size:larger;">{{units.unit_code}}
                                     </span></p>
                                 </p>
-                            {% endif %}
+                            {% endfor %}
                         </div>
                     <div class="body col-6">
-                        {% if units.unit_name %}
+                        {% for units in units %}
                             <p> <span style="font: weight 900px; font-size:larger;">{{units.unit_name}}
                                 </span></p>
                             </p>
-                        {% endif %}
+                        {% endfor %}
                     </div>
                     
                 </div>
