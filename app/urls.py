@@ -19,4 +19,5 @@ urlpatterns = [
     path('results/', views.viewResults, name='viewResults'),
     # path('removeSem/<int:semester_name>/', views.removeSem, name='removeSem'),
     path('result-chart/', views.bar_chart, name='bar_chart'),
+    path('bar-chart/', views.bar_chart, name='bar_chart'),
 ]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       

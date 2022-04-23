@@ -140,6 +140,7 @@ def viewResults(request):
     marks = Results.objects.filter().all()
     print(marks)
     ctx ={
+        
         "marks":marks,
     }
     return render(request, 'all-temps/results.html',ctx)
@@ -148,11 +149,11 @@ def bar_chart(request):
     labels = []
     data = []
 
-    queryset = Results.objects.values('results__unit').annotate(country_population=Sum('marks')).order_by('-result_marks')
+    queryset = Results.objects.values('semester__semester_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
     for entry in queryset:
-        labels.append(entry['results__unit'])
+        labels.append(entry['semester__semester_name'])
         data.append(entry['result_marks'])
-    
+
     return JsonResponse(data={
         'labels': labels,
         'data': data,
