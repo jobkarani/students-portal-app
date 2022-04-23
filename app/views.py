@@ -137,3 +137,10 @@ def viewResults(request):
         "marks":marks,
     }
     return render(request, 'all-temps/results.html',ctx)
+
+def charts(request):   
+    search_form = MarksForm(request.POST or None)
+    context = {
+        'search_form': search_form,
+    }
+    return render(request, 'all-temps/results.html',  context)

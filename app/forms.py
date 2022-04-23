@@ -42,5 +42,5 @@ CHART_CHOICES = (
     ('#1', 'Bar Graph'),
     ('#2', 'Line Graph')
 )
-class Marksorm(forms.Form):
+class MarksForm(forms.Form):
     chart_type = forms.ChoiceField(choices=CHART_CHOICES)
