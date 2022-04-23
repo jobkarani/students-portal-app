@@ -37,12 +37,17 @@
                     </div>
                 </div>
                 <div class="body col-4">
+                    <div class="card-title">
+                        <p style="color: brown; font-size: x-large;font-weight: 900;">Action</p> 
                     {% for units in units %}
+                    <div class="body col-4" >
                         <a href="{% url 'removeUnit' units.unit_name %}" onclick="return confirm('Are you sure you want to delete this semester?')"
                                     class="btn btn-outline-danger">
-                                    De-register</a>
+                                    remove</a>
+                    </div>
                     {% endfor %}
-                </div>
+                    </div>
+            </div>
             </div>
         </div>
     </div>
