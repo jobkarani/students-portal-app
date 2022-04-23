@@ -1,7 +1,47 @@
 {% extends 'all-temps/base.html' %}
 {% load bootstrap5 %}
 {% block content %}
-<br><br><br><br><br><br><br><br><br><br>
-<p class="unit mt-5" style="color:black;">results work!!</p>
+<div class="container" style="align-items:center; width:60%; margin-top: 10%;">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6" style="width: 100%; padding:10%;">
+                
+                <div class="input">
+                    <div class="text-center">
+                        <div class="title"></div>
+                        <div class="guide" >
+                            These are your results for the following units.
+                        </div>
+                        <hr />
+
+                    </div>
+                    <div class="row">
+                        <div class="body col-6">
+                            <div class="card-title">
+                                <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Name</p>
+                            {% for marks in marks %}
+                                <p> <span style="font: weight 900px; font-size:larger;">{{marks.unit}}
+                                    </span></p>
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="body col-6">
+                        <div class="card-title">
+                            <p style="color: brown; font-size: x-large;font-weight: 900;">Marks</p>
+                        {% for marks in marks %}
+                            <p> <span style="font: weight 900px; font-size:larger;">{{marks.marks}}
+                                </span></p>
+                            </p>
+                        {% endfor %}
+                    </div>
+                    </div>
+                    
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock%}

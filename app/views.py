@@ -111,15 +111,13 @@ def viewSems(request):
     }
     return render(request, 'all-temps/semesters.html',ctx)
 
-def removeSem(request, semester_id):
-    sem = Semester.objects.get(semester_id=semester_id)
-    sem.delete()
-    
-    print(sem)
-    ctx ={
-        "sem":sem,
-    }
-    return redirect('viewSems',ctx)
+# def removeSem(request, semester_name):
+#     sems = get_object_or_404(Semester, name=semester_name)
+#     sems.delete()
+#     ctx ={
+#         "sems":sems,
+#     }
+#     return redirect('index',ctx)
 
 def createResults(request):
     if request.method == 'POST':
@@ -133,5 +131,9 @@ def createResults(request):
     return render(request, 'all-temps/results_form.html', {"form":form})
 
 def viewResults(request):
-
-    return render(request, 'all-temps/results.html')
+    marks = Results.objects.filter().all()
+    print(marks)
+    ctx ={
+        "marks":marks,
+    }
+    return render(request, 'all-temps/results.html',ctx)

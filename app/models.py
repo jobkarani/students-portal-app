@@ -53,11 +53,12 @@ class Unit(models.Model):
         return self.unit_name
 
 class Results(models.Model):
-    marks = models.CharField(max_length=100)
+    name =models.CharField(max_length=100)
+    marks = models.IntegerField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.marks
+        return self.name
 

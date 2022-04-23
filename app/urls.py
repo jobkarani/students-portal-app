@@ -17,4 +17,5 @@ urlpatterns = [
     path('units/', views.viewUnits, name='viewUnits'),
     path('semesters/', views.viewSems, name='viewSems'),
     path('results/', views.viewResults, name='viewResults'),
+    # path('removeSem/<int:semester_name>/', views.removeSem, name='removeSem'),
 ]

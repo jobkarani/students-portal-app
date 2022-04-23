@@ -17,20 +17,25 @@
                     </div>
                     <div class="row">
                         <div class="body col-6">
+                            <div class="card-title">
+                                <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Code</p>
                             {% for units in units %}
                                 <p> <span style="font: weight 900px; font-size:larger;">{{units.unit_code}}
                                     </span></p>
                                 </p>
                             {% endfor %}
                         </div>
+                        </div>
                     <div class="body col-6">
+                        <div class="card-title">
+                            <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Name</p> 
                         {% for units in units %}
                             <p> <span style="font: weight 900px; font-size:larger;">{{units.unit_name}}
                                 </span></p>
                             </p>
                         {% endfor %}
                     </div>
-                    
+                    </div> 
                 </div>
                 </div>
             </div>
