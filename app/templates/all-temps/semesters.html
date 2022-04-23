@@ -16,7 +16,7 @@
 
                     </div>
                     <div class="row">
-                        
+
                         {% for sems in sems %}
                         <div class="body col-6">
                                 <p> <span style="font: weight 900px; font-size:larger;">{{sems.semester_name}}
@@ -25,8 +25,8 @@
                         </div>
                         <div class="body col-6">
                             <a href="" onclick="return confirm('Are you sure you want to delete this semester?')"
-										class="btn btn-outline-primary">
-										Remove</a>
+										class="btn btn-outline-danger">
+										De-register</a>
                         </div>
                         {% endfor %}
 
