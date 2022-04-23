@@ -166,3 +166,15 @@ def bar_chart(request):
         'labels': labels,
         'data': data,
     })
+
+
+def registerUnits(request):
+    regUnitsForm = RegisterUnitsForm()
+    if request.method == 'POST':
+        regUnitsForm = RegisterUnitsForm(request.POST)
+        if regUnitsForm.is_valid():
+            regUnits = regUnitsForm.save(commit=True)
+            regUnits.save()
+            return redirect("/")
+        print("Error wirth form")
+    return render(request, "all-temps/regunits.html", {"form":regUnitsForm})

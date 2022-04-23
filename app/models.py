@@ -48,7 +48,6 @@ class Unit(models.Model):
     unit_code = models.IntegerField()
     semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return self.unit_name
 
@@ -62,3 +61,9 @@ class Results(models.Model):
     def __str__(self):
         return self.name
 
+class RegisterUnits(models.Model):
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.unit.unit_name
