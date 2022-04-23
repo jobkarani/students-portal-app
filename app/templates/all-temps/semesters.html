@@ -24,7 +24,7 @@
                                 </p>
                         </div>
                         <div class="body col-6">
-                            <a href="" onclick="return confirm('Are you sure you want to delete this semester?')"
+                            <a href="{% url 'removeSem' sems.semester_name %}" onclick="return confirm('Are you sure you want to delete this semester?')"
 										class="btn btn-outline-danger">
 										De-register</a>
                         </div>

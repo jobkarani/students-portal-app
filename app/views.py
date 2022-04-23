@@ -117,13 +117,13 @@ def viewSems(request):
     }
     return render(request, 'all-temps/semesters.html',ctx)
 
-# def removeSem(request, semester_name):
-#     sems = get_object_or_404(Semester, name=semester_name)
-#     sems.delete()
-#     ctx ={
-#         "sems":sems,
-#     }
-#     return redirect('index',ctx)
+def removeSem(request, slug):
+    sems = get_object_or_404(Semester, semester_name=slug)
+    sems.delete()
+    ctx ={
+        "sems":sems,
+    }
+    return redirect('viewSems')
 
 def createResults(request):
     if request.method == 'POST':
@@ -149,7 +149,7 @@ def bar_chart(request):
     labels = []
     data = []
 
-    queryset = Results.objects.values('semester__semester_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
+    queryset = Results.objects.filter(student=1).values('semester__semester_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
     for entry in queryset:
         labels.append(entry['semester__semester_name'])
         data.append(entry['result_marks'])

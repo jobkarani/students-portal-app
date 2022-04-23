@@ -16,7 +16,7 @@
 
                     </div>
                     <div class="row">
-                        <div class="body col-6">
+                        <div class="body col-3">
                             <div class="card-title">
                                 <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Name</p>
                             {% for marks in marks %}
@@ -26,7 +26,7 @@
                             {% endfor %}
                         </div>
                     </div>
-                    <div class="body col-6">
+                    <div class="body col-3">
                         <div class="card-title">
                             <p style="color: brown; font-size: x-large;font-weight: 900;">Marks</p>
                         {% for marks in marks %}
@@ -35,8 +35,28 @@
                             </p>
                         {% endfor %}
                     </div>
-                    </div>
                 </div>
+                <div class="body col-3">
+                    <div class="card-title">
+                        <p style="color: brown; font-size: x-large;font-weight: 900;">Semester</p>
+                    {% for marks in marks %}
+                        <p> <span style="font: weight 900px; font-size:larger;">{{marks.semester}}
+                            </span></p>
+                        </p>
+                    {% endfor %}
+                </div>
+                </div>
+                <div class="body col-3">
+                    <div class="card-title">
+                        <p style="color: brown; font-size: x-large;font-weight: 900;">Student</p>
+                    {% for marks in marks %}
+                        <p> <span style="font: weight 900px; font-size:larger;">{{marks.student}}
+                            </span></p>
+                        </p>
+                    {% endfor %}
+                </div>
+                </div>  
+
                 <div class="row">
                     <div class="col-12">
                         <div id="container" style="width: 75%;">
