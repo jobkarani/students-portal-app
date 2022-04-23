@@ -21,7 +21,7 @@ from django.contrib.auth import views
 from django_registration.backends.one_step.views import RegistrationView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('user/', admin.site.urls),
     path('', include('app.urls')),
     path('accounts/register/', RegistrationView.as_view(success_url='/create_profile'),
          name='django_registration_register'),

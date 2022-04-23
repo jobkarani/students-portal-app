@@ -1,7 +1,7 @@
+from datetime import datetime
 import pandas
 from django.views.generic import ListView
 from django.contrib import messages
-from .utils import get_chart
 from .models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
@@ -9,6 +9,9 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .forms import *
+from datetime import datetime as datetime
+from django.db.models import Sum
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -141,37 +144,16 @@ def viewResults(request):
     }
     return render(request, 'all-temps/results.html',ctx)
 
-def charts(request):   
-    search_form = MarksForm(request.POST or None)
-    context = {
-        'search_form': search_form,
-    }
-    return render(request, 'all-temps/results.html',  context)
+def bar_chart(request):
+    labels = []
+    data = []
 
-def marks(request):
-    marks_df = None
-    chart = None
-    search_form = MarksForm(request.POST or None)
-
-    if request.method == 'POST':
-        chart_type = request.POST.get('chart_type')
-        results_by = request.POST.get('results_by')
-        print(chart_type)
-        marks_qs = Results.objects.filter().all()
-        
-        if len(marks_qs) > 0:
-            marks_df = pandas.DataFrame(marks_qs.values())
-            print(marks_df)
-            marks_df['created'] = marks_df['created'].apply(lambda x: x.strftime('%d/%m/%Y'))
-            chart = get_chart(chart_type, marks_df, results_by)
-            marks_df = marks_df.to_html()
-
-        else:
-            messages.warning(request, "Apparently no data available...")
-
-    context = {
-        'search_form': search_form,
-        'marks_df': marks_df,
-        'chart': chart,
-    }
-    return render(request, 'all-temps/results.html',  context)
+    queryset = Results.objects.values('results__unit').annotate(country_population=Sum('marks')).order_by('-result_marks')
+    for entry in queryset:
+        labels.append(entry['results__unit'])
+        data.append(entry['result_marks'])
+    
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })

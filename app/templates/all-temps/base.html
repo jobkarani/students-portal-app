@@ -31,6 +31,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/index.css' %}">
   <script src="https://kit.fontawesome.com/3af6dccc22.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   {% endblock %}
 
   <style>
@@ -56,12 +57,7 @@
                   </div>
                   
                     {% block content %}
-                    {% url 'marks' as marks_home %}
-                  <div class="ui secondary  menu" style="background-color: #FFF8D5;">
-                      <a class="item"><img style="height:100px;width:100px;" src="{% static 'images/graph.webp' %}" alt=""></a>
-                      <a href="{{marks_home}}" class=" active item">Graph</a>
-                  </div>
-                  <div class="col-8" style="background-color: #FFF8D5;">
+                  
                     {% endblock %}
                   </div>
                 </div>
