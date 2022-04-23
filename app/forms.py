@@ -37,3 +37,8 @@ class ResultsForm(ModelForm):
     class Meta:
         model = Results
         fields = ['marks', 'unit', 'student', 'semester']      
+
+class RegisterUnitsForm(ModelForm):
+    class Meta:
+        model = RegisterUnits
+        fields = ['student', 'unit']
