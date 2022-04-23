@@ -16,7 +16,7 @@
 
                     </div>
                     <div class="row">
-                        <div class="body col-6">
+                        <div class="body col-4">
                             <div class="card-title">
                                 <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Code</p>
                             {% for units in units %}
@@ -26,7 +26,7 @@
                             {% endfor %}
                         </div>
                         </div>
-                    <div class="body col-6">
+                    <div class="body col-4">
                         <div class="card-title">
                             <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Name</p> 
                         {% for units in units %}
@@ -35,8 +35,13 @@
                             </p>
                         {% endfor %}
                     </div>
-                    </div> 
                 </div>
+                <div class="body col-4">
+                    {% for units in units %}
+                        <a href="{% url 'removeUnit' units.unit_name %}" onclick="return confirm('Are you sure you want to delete this semester?')"
+                                    class="btn btn-outline-danger">
+                                    De-register</a>
+                    {% endfor %}
                 </div>
             </div>
         </div>

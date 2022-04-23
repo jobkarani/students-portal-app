@@ -98,6 +98,14 @@ def viewUnits(request):
     }
     return render(request, 'all-temps/units.html',ctx)
 
+def removeUnit(request, slug):
+    unit = get_object_or_404(Unit, unit_name=slug)
+    unit.delete()
+    ctx ={
+        "unit":unit,
+    }
+    return redirect('viewUnits')
+
 def createSem(request):
     if request.method == 'POST':
         form = SemesterForm(request.POST, request.FILES)
