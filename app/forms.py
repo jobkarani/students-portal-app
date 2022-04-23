@@ -37,3 +37,10 @@ class ResultsForm(ModelForm):
     class Meta:
         model = Results
         fields = ['marks', 'unit', 'student', 'semester']      
+
+CHART_CHOICES = (
+    ('#1', 'Bar Graph'),
+    ('#2', 'Line Graph')
+)
+class Marksorm(forms.Form):
+    chart_type = forms.ChoiceField(choices=CHART_CHOICES)
