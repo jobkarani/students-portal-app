@@ -19,4 +19,5 @@ urlpatterns = [
     path('results/', views.viewResults, name='viewResults'),
     # path('removeSem/<int:semester_name>/', views.removeSem, name='removeSem'),
     path('search/', views.charts, name='charts'),
-]
+    path('marks/', views.marks, name='marks'),
+]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       

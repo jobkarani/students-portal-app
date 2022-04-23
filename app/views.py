@@ -1,7 +1,7 @@
 import pandas
 from django.views.generic import ListView
 from django.contrib import messages
-# from .utils import get_chart
+from .utils import get_chart
 from .models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
@@ -151,14 +151,13 @@ def charts(request):
 def marks(request):
     marks_df = None
     chart = None
-    no_data = None
     search_form = MarksForm(request.POST or None)
 
     if request.method == 'POST':
         chart_type = request.POST.get('chart_type')
         results_by = request.POST.get('results_by')
         print(chart_type)
-        sales_qs = Results.objects.filter().all()
+        marks_qs = Results.objects.filter().all()
         
         if len(marks_qs) > 0:
             marks_df = pandas.DataFrame(marks_qs.values())

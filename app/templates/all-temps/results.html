@@ -38,13 +38,26 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{search_form}}
-                            <button class="btn btn-primary mt-3" type="submit">Search</button>
-                        </form>
-                    </div>
+        {% for message in messages %}
+        <div role="alert" class="alert alert-warning">
+            {{message}}
+        </div>
+    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{search_form}}
+        <button class="btn btn-primary mt-3" type="submit">Search</button>
+    </form>
+    <hr>
+    {% if marks_df %}
+        <b>Marks Dataframe</b>
+        {{marks_df|safe}}
+        <hr>
+        <hr>
+        <b>Chart</b>
+        <img src="data:image/png;base64, {{chart|safe}}" alt="" id="img">
+    {% endif %}<br>
+                </div>
                 </div>
                 </div>
             </div>

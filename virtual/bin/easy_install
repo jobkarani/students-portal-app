@@ -1,4 +1,4 @@
-#!/home/code_monkey/Documents/results-app/virtual/bin/python3
+#!/home/code_monkey/Documents/results-app/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

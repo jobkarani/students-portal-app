@@ -54,9 +54,14 @@
                           {% include 'sidenav.html' %}
                       </div>
                   </div>
-                  <div class="col-8" style="background-color: #FFF8D5;">
+                  
                     {% block content %}
-
+                    {% url 'marks' as marks_home %}
+                  <div class="ui secondary  menu" style="background-color: #FFF8D5;">
+                      <a class="item"><img style="height:100px;width:100px;" src="{% static 'images/graph.webp' %}" alt=""></a>
+                      <a href="{{marks_home}}" class=" active item">Graph</a>
+                  </div>
+                  <div class="col-8" style="background-color: #FFF8D5;">
                     {% endblock %}
                   </div>
                 </div>
