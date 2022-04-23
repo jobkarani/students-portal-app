@@ -1,1 +1,1 @@
-web: gunicorn studenttportall.wsgi
+web: gunicorn project.wsgi
