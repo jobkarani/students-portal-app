@@ -36,37 +36,37 @@ def create_profile(request):
 
 
 @login_required(login_url="/accounts/login/")
-def profile(request):
+def parent(request):
     current_user = request.user
-    profile = Profile.objects.filter(user_id=current_user.id).first()
+    profile = Parent.objects.filter(user_id=current_user.id).first()
 
     if request.method == 'POST':
         form = ProfileForm(request.POST)
     else:
         form = ProfileForm()
-    return render(request, "all-temps/profile.html", {"profile": profile, "form":form})
+    return render(request, "parent/parent.html", {"profile": profile, "form":form})
 
 
 
-def update_profile(request, id):
-    # current_user = request.user
-    user = User.objects.get(id=id)
-    profile = Profile.objects.get(user=user)
-    form = UpdateProfileForm(instance=profile)
-    if request.method == "POST":
-        form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
-        if form.is_valid():
+# def update_profile(request, id):
+#     # current_user = request.user
+#     user = User.objects.get(id=id)
+#     profile = Profile.objects.get(user=user)
+#     form = UpdateProfileForm(instance=profile)
+#     if request.method == "POST":
+#         form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
+#         if form.is_valid():
 
-            profile = form.save(commit=False)
-            profile.save()
-            return redirect('profile')
+#             profile = form.save(commit=False)
+#             profile.save()
+#             return redirect('profile')
 
-    ctx = {
-        "form": form,
-        "user":user,
-        "profile":profile,
-        }
-    return render(request, 'all-temps/update_profile.html', ctx)
+#     ctx = {
+#         "form": form,
+#         "user":user,
+#         "profile":profile,
+#         }
+#     return render(request, 'all-temps/update_profile.html', ctx)
 
 def createStudent(request):
     if request.method == 'POST':
@@ -178,3 +178,9 @@ def registerUnits(request):
             return redirect("/")
         print("Error wirth form")
     return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
+
+@login_required
+def student_profile(request, id):
+    student = User.objects.get(id=id)
+    profile = Student.objects.get(user_id=id)  # get profile
+    return render(request, "employer/jobseekerview.html", {"student": student, "profile": profile)
