@@ -57,7 +57,7 @@ class Student(models.Model):
     # unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.regno
 
 
 class Unit(models.Model):
@@ -76,7 +76,7 @@ class Results(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name
+        return self.student.user.first_name
 
 class RegisterUnits(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)

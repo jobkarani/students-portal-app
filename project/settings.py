@@ -84,6 +84,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 # redirect urls
+# LOGIN_URL = 'login'
+
+LOGOUT_REDIRECT_URL = 'options'
+
 LOGIN_REDIRECT_URL = '/'
 
 

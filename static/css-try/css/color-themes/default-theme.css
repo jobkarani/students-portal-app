@@ -88,7 +88,7 @@ a,
 .contact-page-section .form-column .inner-column h3,
 .sidebar-page-container .comments-area .comment .comment-inner .rating .fa,
 .sidebar-page-container .comments-area .comment .comment-inner .reply{
-	color:#13b5ea;
+	color:#B4ECE3 ;
 }
 
 /*Background Color*/
@@ -138,12 +138,12 @@ a,
 .blog-single .inner-box .lower-content .post-meta:after,
 .pricing-column .inner-box:hover .lower-content .join-btn,
 .main-header .outer-box .option-box .cart-box .cart-panel .btns-boxed li a:hover{
-	background-color:#13b5ea;
+	background-color:#B4ECE3 ;
 }
 
 .pricing-column.active .inner-box,
 .pricing-column .inner-box:hover{
-	outline-color:#13b5ea;
+	outline-color:#B4ECE3 ;
 }
 
 /*Border Color*/
@@ -188,17 +188,17 @@ a,
 .contact-form select:focus, .contact-form textarea:focus,
 .comment-form .form-group select:focus, .comment-form .form-group textarea:focus,
 .shop-form input:focus, .shop-form select:focus, .shop-form textarea:focus{
-	border-color:#13b5ea;
+	border-color:#B4ECE3 ;
 }
 
 .header-style-two .nav-outer::before,
 .header-style-two .nav-outer .side-curve{
-	border-bottom-color:#13b5ea;
+	border-bottom-color:#B4ECE3 ;
 }
 
 /*RGBA Color Light*/
 .services-block-two .inner-box .overlay-box .overlay-inner{
-	background-color:rgba(19,181,234,0.85);
+	background-color:#B4ECE3 ;
 }
 
 /*RGBA Color Dark*/
@@ -206,13 +206,13 @@ a,
 .call-to-action:before,
 .case-block .inner-box .image .overlay-box:before,
 .sponsors-section:before{
-	background-color:rgba(19,181,234,0.90);
+	background-color:#B4ECE3 ;
 }
 
 @media only screen and (max-width: 767px){
 	
 	.main-menu .navbar-header .navbar-toggle{
-		border-color:#13b5ea;
+		border-color:#B4ECE3 ;
 	}
 	
 	.main-menu .navbar-header .navbar-toggle,
@@ -231,7 +231,7 @@ a,
 	.main-menu .navbar-collapse > .navigation > li.current > a,
 	.main-menu .navbar-collapse > .navigation > li.current-menu-item > a,
 	.header-style-two.inner-header .main-menu .navigation > li > a{
-		background-color:#13b5ea;
+		background-color:#B4ECE3 ;
 	}
 	
 }
