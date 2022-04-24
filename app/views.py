@@ -21,7 +21,7 @@ def index(requests):
 def options(request):
     return render(request, 'registration/options.html')
 
-    
+
 # @login_required(login_url="/accounts/login/")
 # def create_profile(request):
 #     current_user = request.user
@@ -133,7 +133,7 @@ def student_signup(request):
 
     else:
         form = StudentSignUp()
-    return render(request, "registration/register.html", {'form': form})
+    return render(request, "django_registration/registration_form.html", {'form': form})
 
 def parent_signup(request):
     if request.method == "POST":
@@ -145,7 +145,7 @@ def parent_signup(request):
 
     else:
         form = ParentSignUp()
-    return render(request, "registration/register.html", {'form': form})
+    return render(request, "django_registration/registration_form.html", {'form': form})
 
 def parent_home(request):
     return render(request, 'parent/home.html')
