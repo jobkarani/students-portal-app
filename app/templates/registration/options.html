@@ -1,0 +1,106 @@
+{% extends 'slider-base.html' %}
+{% load static %}
+{%load crispy_forms_tags%} 
+{% block content %} 
+{{block.super}}
+<div class="container-fluid options-page" >
+
+<div class="btn-options text-center" style="padding-top: 150px;">
+    <a href="{%url 'parent_signup' %}" class="btn btn btn-warning mr-4">Sign Up As Parent</a>
+    <a href="{%url 'student_signup' %}" class="btn btn btn-info">Sign Up As Student</a>
+</div>
+
+</div>
+
+<div class="foot-cont">
+    <footer class="text-center text-dark text-lg-start " style="background-color:  #e6f0f9;">
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">
+                JobsLux
+              </h6>
+              <p>
+                Millions of people are searching for jobs, salary information,
+                 company reviews, and interview questions. Snagjobs makes it 
+                 possible for jobseekers to be considered for employment.
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <hr class="w-100 clearfix d-md-none" />
+  
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+              
+              <p>
+                <a href="/" class="text-dark">Home</a>
+              </p>
+   
+            </div>
+            <!-- Grid column -->
+  
+            <hr class="w-100 clearfix d-md-none" />
+  
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none" />
+  
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p><i class="fas fa-home mr-3"></i> Ngong Road, NP12, Nairobi</p>
+              <p><i class="fas fa-envelope mr-3"></i> JobsLux@gmail.com</p>
+              <p><i class="fas fa-phone mr-3"></i> +254 768 990</p>
+              <p><i class="fas fa-print mr-3"></i> +254 983 224</p>
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Follow us</h6>
+  
+              <!-- Facebook -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="#!" role="button"><i
+                  class="fab fa-facebook-f"></i></a>
+  
+              <!-- Twitter -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="#!" role="button"><i
+                  class="fab fa-twitter"></i></a>
+  
+              <!-- Google -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="#!" role="button"><i
+                  class="fab fa-google"></i></a>
+  
+              <!-- Instagram -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="#!" role="button"><i
+                  class="fab fa-instagram"></i></a>
+  
+              <!-- Linkedin -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="#!" role="button"><i
+                  class="fab fa-linkedin-in"></i></a>
+              <!-- Github -->
+              <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="#!" role="button"><i
+                  class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+      </div>
+      <!-- Grid container -->
+  
+      <!-- Copyright -->
+      <div class="text-center p-3 text-white" style="background-color: #0969C3">
+        © 2022 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">StudentPortal.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </div>
+{%endblock%}

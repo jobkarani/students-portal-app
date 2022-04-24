@@ -18,6 +18,8 @@ from django.http import JsonResponse
 def index(requests):
     return render(requests, "all-temps/index.html")
 
+def options(request):
+    return render(request, 'registration/options.html')
 # @login_required(login_url="/accounts/login/")
 # def create_profile(request):
 #     current_user = request.user

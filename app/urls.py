@@ -1,15 +1,40 @@
-
-  
-from django.urls import path
+from django.urls import URLPattern, URLResolver,path
 from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+from . import views as app_views
+from http import server
+from unicodedata import name
+from django import urls
 
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('create_profile/', views.create_profile, name='create_profile'),
-    path('update_profile/<int:id>', views.update_profile, name='update_profile'),
-    path('profile/', views.parent, name='parent'),
-    path('accounts/profile/', views.parent, name='parent'),
+    path('register/options/', views.options, name='options'),
+    # path('create_profile/', views.create_profile, name='create_profile'),
+    # path('update_profile/<int:id>', views.update_profile, name='update_profile'),
+    # path('profile/', views.parent, name='parent'),
+    # path('accounts/profile/', views.parent, name='parent'),
+    path('student/profile/', views.profileStudent, name='profileStudent'),
+    path('student/profile/<int:id>',
+         views.profileStudent, name='profileStudent'),
+    path('update_student_profile/', views.update_student_profile,
+         name='update_student_profile'),
+    path('parent/profile/', views.parentProfile, name='parentProfile'),
+    path('update_parent_profile/',
+         views.update_parent_profile, name='update_parent_profile'),
+    path('signup/student/', views.student_signup, name='student_signup'),
+    path('signup/parent/', views.parent_signup, name='parent_signup'),
+    path('parent/home/', views.parent_home, name='parent_home'),
+    path('student/home/', views.student_home, name='student_home'),
+    
+    path('studentDash/', app_views.studentDash, name='studentDash'),
+    path('dashboard/', app_views.dashboard, name='dashboard'),
+    path('lecturer_dashboard/', app_views.lecturerDash, name='lecturerDash'),
+    path('parentDash/', app_views.parentDash, name='parentDash'),
+    path('search_jobseekers/', views.search_student, name='search_student'),
+
     path('createstudent/', views.createStudent, name='createStudent'),
     path('createUnit/', views.createUnit, name='createUnit'),
     path('regUnit/', views.registerUnits, name='regUnit'),
