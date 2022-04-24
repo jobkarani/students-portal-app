@@ -120,8 +120,6 @@ def delete_parent(request, user_id):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 def student_signup(request):
-    # if request.user.is_authenticated:
-    #     return redirect('home')
     if request.method == "POST":
         form = StudentSignUp(request.POST)
         if form.is_valid():
@@ -134,8 +132,6 @@ def student_signup(request):
     return render(request, "registration/register.html", {'form': form})
 
 def parent_signup(request):
-    # if request.user.is_authenticated:
-    #     return redirect('home')
     if request.method == "POST":
         form = ParentSignUp(request.POST)
         if form.is_valid():
@@ -165,18 +161,17 @@ def dashboard(request):
         return redirect('studentDash/')
 
 @login_required
-# @allowed_users(allowed_roles=['admin', 'jobseeker'])
 def studentDash(request):
     current_user = request.user
     profile = Student.objects.get(user_id=current_user.id)
     return render(request, 'student/student_dashboard.html', { 'profile': profile})
 
 @login_required
-def adminDash(request):
+def lecturerDash(request):
     all_parents = User.objects.filter(is_parent=True).all()
     all_students = User.objects.filter(is_student=True).all()
     
-    return render(request, 'admin/admin_dashboard.html', {"all_parents": all_parents, 'all_students': all_students})
+    return render(request, 'lecturer/lecturer_dashboard.html', {"all_parents": all_parents, 'all_students': all_students})
 
 @login_required
 def parentDash(request):
