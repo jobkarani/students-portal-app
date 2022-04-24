@@ -50,10 +50,10 @@ class Student(models.Model):
         ('Other', 'Other'),
     )
     user = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
-    regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560etc',max_length=100,unique=True)
+    regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560etc',max_length=100,unique=False)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE,null=True)
     # unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
     def __str__(self):
