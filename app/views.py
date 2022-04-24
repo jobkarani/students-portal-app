@@ -154,6 +154,16 @@ def parent_home(request):
 def student_home(request):
     return render(request, 'student/home.html')
 
+@login_required
+def dashboard(request):
+    current = request.user
+    if current.is_parent:
+        return redirect('parentDash/')
+    elif current.is_lecturer:
+        return redirect('lecturerdashboard')
+    else:
+        return redirect('studentDash/')
+
 # def update_profile(request, id):
 #     # current_user = request.user
 #     user = User.objects.get(id=id)
