@@ -20,6 +20,8 @@ def index(requests):
 
 def options(request):
     return render(request, 'registration/options.html')
+
+    
 # @login_required(login_url="/accounts/login/")
 # def create_profile(request):
 #     current_user = request.user

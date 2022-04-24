@@ -1,8 +1,6 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
-from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.models import PermissionsMixin
+from django.contrib.auth.models import AbstractUser, User
 from django.urls import reverse
 from datetime import date
 
@@ -51,7 +49,7 @@ class Student(models.Model):
         ('Female', 'Female'),
         ('Other', 'Other'),
     )
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
     regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560etc',max_length=100,unique=True)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)
