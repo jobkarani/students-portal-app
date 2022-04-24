@@ -1,0 +1,25 @@
+{% extends 'slider-base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<div class="container-full">
+  <div class="">
+   <div class="format">
+    <div class="upt" id="myContent">
+        <h2 class="text-center">Update Profile</h2>
+        <form class="forms" action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <fieldset class="form-group row" style="gap: 10px; ">
+              <div class="col-md-6">
+                {% bootstrap_form user_form%}
+              </div>
+              {% bootstrap_form student_form%}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-success" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
