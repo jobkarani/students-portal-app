@@ -164,6 +164,37 @@ def dashboard(request):
     else:
         return redirect('studentDash/')
 
+@login_required
+# @allowed_users(allowed_roles=['admin', 'jobseeker'])
+def studentDash(request):
+    current_user = request.user
+    profile = Student.objects.get(user_id=current_user.id)
+    return render(request, 'student/student_dashboard.html', { 'profile': profile})
+
+@login_required
+def adminDash(request):
+    all_parents = User.objects.filter(is_parent=True).all()
+    all_students = User.objects.filter(is_student=True).all()
+    
+    return render(request, 'admin/admin_dashboard.html', {"all_parents": all_parents, 'all_students': all_students})
+
+@login_required
+def parentDash(request):
+    current_user = request.user
+    profile = Parent.objects.get(user_id=current_user.id)
+    student = User.objects.filter(is_student=True).all()
+    student_profs = Student.objects.all()
+    parent = User.objects.all()
+    
+    context = {
+        "student": student,
+        "parent": parent,
+        'profile': profile,
+        'student_profs':student_profs,
+    
+    }
+    return render(request, 'parent/parent_dashboard.html', context)
+
 # def update_profile(request, id):
 #     # current_user = request.user
 #     user = User.objects.get(id=id)
