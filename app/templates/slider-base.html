@@ -1,0 +1,74 @@
+{% load bootstrap5 %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <!-- <link rel="stylesheet" href="{% static 'css-trycss/style.css' %}"> -->
+  
+  <link rel="stylesheet" href="{% static 'css-try/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css-try/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'css-try/css/slick.css' %}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css-try/css/responsive.css' %}">
+    <!--Color Switcher Mockup-->
+  <link rel="stylesheet" href="{% static 'css-try/css/color-switcher-design.css' %}">
+    <!--Color Themes-->
+  <link id="theme-color-file" href="{% static 'css-try/css/color-themes/default-theme.css' %}" rel="stylesheet">
+  
+
+  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="5ea3c284-d372-4af4-a2df-698aa52e1a36";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+  {% endblock %}
+  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="5ea3c284-d372-4af4-a2df-698aa52e1a36";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+
+  <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="5ea3c284-d372-4af4-a2df-698aa52e1a36";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+</head>
+
+<body>
+  {% include "navbar.html" %}
+
+  {% block content %}  {%endblock%}
+
+
+
+  
+  {% block scripts %}
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+  <script src="{% static 'js/jquery.js' %}"></script>   
+  <script src="{% static 'js/popper.min.js' %}"></script>  
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>  
+  <script src="{% static 'js/jquery.mCustomScrollbar.concat.min.js' %}"></script>  
+  <script src="{% static 'js/jquery.fancybox.js' %}"></script>  
+  <script src="{% static 'js/appear.js' %}"></script>  
+  <script src="{% static 'js/owl.js' %}"></script>  
+  <script src="{% static 'js/wow.js' %}"></script>  
+  <script src="{% static 'js/slick.js' %}"></script>  
+  <script src="{% static 'js/jquery-ui.js' %}"></script>  
+  <script src="{% static 'js/script.js' %}"></script>  
+  <script src="{% static 'js/map-script.js' %}"></script>  
+  <script src="{% static 'js/color-settings.js' %}"></script>
+  
+  {% endblock %}
+
+</body>
+
+
+</html>
