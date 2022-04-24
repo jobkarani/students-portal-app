@@ -195,6 +195,22 @@ def parentDash(request):
     }
     return render(request, 'parent/parent_dashboard.html', context)
 
+
+def search_student(request):
+    current_user = request.user
+    profile = Parent.objects.get(user_id=current_user.id)
+    if 'user' in request.GET and request.GET["user"]:
+        search_term = request.GET.get("user")
+        searched_students = Student.search_students_by_user(
+            search_term)
+        message = f"{search_term}"
+
+        return render(request, 'parent/search.html', {"message": message, "students": searched_students, 'profile': profile})
+
+    else:
+        message = 'You have not searched for any term'
+        return render(request, 'parent/search.html', {"message": message, })
+
 # def update_profile(request, id):
 #     # current_user = request.user
 #     user = User.objects.get(id=id)
