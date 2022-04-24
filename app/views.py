@@ -18,33 +18,106 @@ from django.http import JsonResponse
 def index(requests):
     return render(requests, "all-temps/index.html")
 
-@login_required(login_url="/accounts/login/")
-def create_profile(request):
+# @login_required(login_url="/accounts/login/")
+# def create_profile(request):
+#     current_user = request.user
+#     title = "CreateProfile"
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             profile = form.save(commit=False)
+#             profile.user = current_user
+#             profile.save()
+#     else:
+#         form = ProfileForm()
+#     return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+
+
+@login_required
+def profileStudent(request, id):
+    student = User.objects.get(id=id)
+    profile = Student.objects.get(user_id=id)  # get profile
+    return render(request, "student/student.html", {"student": student, "profile": profile})
+
+@login_required
+def update_student_profile(request):
     current_user = request.user
-    title = "CreateProfile"
+    profile = Student.objects.get(user_id=current_user.id)
     if request.method == 'POST':
-        form = ProfileForm(request.POST, request.FILES)
-        if form.is_valid():
-            profile = form.save(commit=False)
-            profile.user = current_user
-            profile.save()
+        user_form = UpdateUserProfile(
+            request.POST, request.FILES, instance=request.user)
+        student_form = UpdateStudentProfile(
+            request.POST, request.FILES, instance=request.user.student)
+        if user_form.is_valid() and student_form.is_valid():
+            user_form.save()
+            student_form.save()
+            messages.success(
+                request, 'Your Profile account has been updated successfully')
+            return redirect('profileStudent')
     else:
-        form = ProfileForm()
-    return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
+        user_form = UpdateUserProfile(instance=request.user)
+        student_form = UpdateStudentProfile(
+            instance=request.user.student)
+    params = {
+        'user_form': user_form,
+        'student_form': student_form,
+        'profile': profile
+    }
+    return render(request, 'student/update_student.html', params)
 
+@login_required
+def delete_student(request, user_id):
+    student = Student.objects.get(pk=user_id)
+    if student:
+        student.delete_user()
+        messages.success(request, f'User deleted successfully!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+@login_required
+def parentProfile(request):
+    parent = request.user
+    profile = Parent.objects.get(user_id=parent.id)  # get profile
+    profile = Parent.objects.filter(
+        user_id=parent.id).first()  # get profile
+    context = {
+        "parent": parent,
+        'profile': profile
+    }
+    return render(request, 'parent/parent.html', context)
 
-
-@login_required(login_url="/accounts/login/")
-def parent(request):
+@login_required
+def update_parent_profile(request):
     current_user = request.user
-    profile = Parent.objects.filter(user_id=current_user.id).first()
-
+    profile = Parent.objects.get(
+        user_id=current_user.id)  # get profile
     if request.method == 'POST':
-        form = ProfileForm(request.POST)
+        u_form = UpdateUserProfile(
+            request.POST, request.FILES, instance=request.user)
+        p_form = UpdateParentProfile(
+            request.POST, request.FILES, instance=request.user.parent)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(
+                request, 'Your Profile account has been updated successfully')
+            return redirect('profile')
     else:
-        form = ProfileForm()
-    return render(request, "parent/parent.html", {"profile": profile, "form":form})
+        u_form = UpdateUserProfile(instance=request.user)
+        p_form = UpdateParentProfile(instance=request.user.parent)
+    context = {
+        'u_form': u_form,
+        'p_form': p_form,
+        'profile': profile
+    }
+    return render(request, 'parent/update_parent.html', context)
+
+@login_required
+def delete_parent(request, user_id):
+    parent = Parent.objects.get(pk=user_id)
+    if parent:
+        parent.delete_user()
+        messages.success(request, f'Parent deleted successfully!')
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
 
@@ -178,9 +251,3 @@ def registerUnits(request):
             return redirect("/")
         print("Error wirth form")
     return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
-
-@login_required
-def student_profile(request, id):
-    student = User.objects.get(id=id)
-    profile = Student.objects.get(user_id=id)  # get profile
-    return render(request, "employer/jobseekerview.html", {"student": student, "profile": profile)

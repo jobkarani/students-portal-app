@@ -51,6 +51,10 @@ class StudentSignUp(UserCreationForm):
 
         return student
 
+class UpdateParentProfile(forms.ModelForm):
+    class Meta:
+        model = Parent
+        fields = ('phone', 'profile_photo', )
 
 class UpdateStudentProfile(forms.ModelForm):
 
