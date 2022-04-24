@@ -724,7 +724,7 @@ img{
 	display: block;
 	float: none;
 	padding-left:15px;
-	background:#13b5ea;
+	background:#B4ECE3;
 }
 
 .header-style-two .nav-outer::before{
@@ -732,7 +732,7 @@ img{
 	content: '';
 	left: -50px;
 	top: 0px;
-	border-bottom: 70px solid #13b5ea;
+	border-bottom: 70px solid #B4ECE3;
     border-left: 50px solid transparent;
 }
 
@@ -740,7 +740,7 @@ img{
 	position: absolute;
 	content: '';
 	right: -50px;
-	border-bottom: 70px solid #13b5ea;
+	border-bottom: 70px solid #B4ECE3;
     border-right: 50px solid transparent;
 }
 
