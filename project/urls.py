@@ -20,13 +20,17 @@ from django.contrib.auth import views
 # from app import views
 from django_registration.backends.one_step.views import RegistrationView
 
+# urlpatterns = [
+#     path('user/', admin.site.urls),
+#     path('', include('app.urls')),
+#     path('accounts/register/', RegistrationView.as_view(success_url='/'),
+#          name='django_registration_register'),
+#     path('accounts/', include('django_registration.backends.one_step.urls')),
+#     path('accounts/', include('django.contrib.auth.urls')),
+#     path('logout/', views.logout_then_login , name='logout'),
+# ]
 urlpatterns = [
-    path('user/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include('app.urls')),
-    path('accounts/register/', RegistrationView.as_view(success_url='/'),
-         name='django_registration_register'),
-    path('accounts/', include('django_registration.backends.one_step.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('logout/', views.logout_then_login , name='logout'),
+    path('', include('django.contrib.auth.urls')),
 ]
-

@@ -9,13 +9,13 @@
                     <div class="job-img">
                         {% if profile.profile_photo %}
                         <img src="{{profile.profile_photo.url}}" alt="" class="prof-pic"> {%else%}
-                        <img src="{%static 'photos/avatar.png' %}" class="prof-pic" alt="My profile picture"> {% endif %}
+                        <img src="" class="prof-pic" alt="My profile picture"> {% endif %}
                         <hr>
 
                     </div>
 
                     <div class="sub-btn">
-                        <a href="{% url 'update_jobseeker_profile' %}" class="prof-btn">
+                        <a href="{% url 'update_student_profile' %}" class="prof-btn">
                             <button class="btn btn-light mr-1 mb-1" type="submit">Update Profile</button>
                         </a>
 

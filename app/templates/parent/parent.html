@@ -1,68 +1,50 @@
-{% extends "all-temps/base.html" %}
-{% block content %}
-<br><br><br><br>
-<style>
-    .container {
-        margin-left: 35%;
-    }
+{% extends 'slider-base.html' %} {% block content %} {% load static %}
 
-    section {
-        overflow: hidden;
-        width: 100%;
-    }
-</style>
-<section>
-    <div class=" container">
-        <div class=" mt-5">
+<section class="profile">
+    <div class="container-full container">
+        <div class="prof_container">
             <div class="row">
-                <div class="col-md-4">
-                    <div class="card"
-                        style="filter: drop-shadow(2px 4px 8px #585858);">
+                <div class="col-lg-4 col-md-12 prof_img">
+                    <div class="bg-img">
                         {% if profile.profile_photo %}
-                        <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top">
-                        {%else%}
-                        <img src="https://st2.depositphotos.com/1104517/11965/v/600/depositphotos_119659092-stock-illustration-male-avatar-profile-picture-vector.jpg"
-                            class="card-img-top" alt="My profile picture">
-                        {% endif %}
-                        <div class="card-body text-center">
-                            <h4 class="card-text">
-                                {{ user.first_name }} 
-                            </h4>
-                            <p><span style="font: weight 900px; font-size:larger;">Username: </span> {{ user.username }}
-                            </p>
-                            <p>
+                        <img src="{{profile.profile_photo.url}}" alt="" class="prof-pic"> {%else%}
+                        <img src="" class="prof-pic" alt="My profile picture"> {% endif %}
+                        <hr>
 
-                            {% if profile.phone %}
-                            <p> <span style="font: weight 900px; font-size:larger;"> Phone Number:
-                                </span>{{profile.phone}}</p>
-                            {% else %}
-                            <span class="badge rounded-pill bg-info text-white">No contact</span>
-                            </p>
-                            {% endif %}
-
-                            
-                            <h6>Joined on: <span class="badge rounded-pill bg-secondary text-white">
-                                    {{ user.date_joined|date }} </span></h6>
-                        </div>
                     </div>
-                    <br>
-                    <div class="deets">
-                        <div>
-                            <!-- <h3>{{user.username}}</h3> -->
-                            {% if request.user is user %}
-                            <div style="margin-bottom: 5%;">
-                                <button class="btn btn-primary" type="submit"><a
-                                        href="{%url 'update_profile' user.id %}" style="color: #fff;text-decoration: none;">
-                                        Edit Profile
-                                    </a></button>
-                            </div>
-                            {% endif %}
 
-                        </div>
+                    <div class="sub-btn text-center">
+                        <a href="{% url 'update_parent_profile' %}" class="prof-btn">
+                            <button class="btn btn-light mr-1 mb-1" type="submit">Update Profile</button>
+                        </a>
+                        
                     </div>
+
+                </div>
+                <div class="col-lg-7 col-md-12 prof_content">
+                    <h3>INFORMATION</h3>
+                    <hr>
+                    <div>
+                        <h4>Full Name : <span>{{ user.first_name }}</span> </h4>
+                        <h4>Last Name: <span>{{ user.last_name }}</span> </h4>
+                        <h4>Username : <span>{{ user.username }}</span> </h4>
+                        <h4>Phone Number : <span class="badge badge-warning text-dark">{{ profile.phone }}</span>
+                        </h4>
+                    </div>
+                    <hr>
+
+
                 </div>
             </div>
         </div>
+        <div class="prof-logo">
+            <a href=""><i class="uil uil-facebook"></i></a>
+            <a href=""><i class="uil uil-twitter"></i></a>
+            <a href=""><i class="uil uil-instagram"></i></a>
+        </div>
     </div>
+
+  
 </section>
-{% endblock %}
+
+{%endblock%}

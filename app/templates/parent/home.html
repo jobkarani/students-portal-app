@@ -1,0 +1,57 @@
+{% extends 'slider-base.html' %} {% load static %} {% load crispy_forms_tags %} {% load bootstrap5 %} {% block content%} {{block.super}} {% if request.user%}
+<section class="employer_home">
+    <div class="container-full">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 ">
+                    <div class="home_employ">
+                        <h1 class="head">Find results for your student</h1>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="employer_img">
+                        <img src="" class="employer_img" alt="xxxxxx">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rectangle">
+
+        </div>
+
+        <form class="form-inline my-2 my-lg-0 rounded-pill">
+            <input class="form-control mr-sm-2 rounded-pill" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <div class="col-md-6">
+            <div class="popular container">
+                <h3 class="text-center mt-3">About our School : </h3>
+                <div class="row">
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                    <div class="col-md-3">
+                        <h5><span class="badge badge-pill badge-primary">Software Development</span></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %} {%endblock%}
