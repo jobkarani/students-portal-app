@@ -147,7 +147,12 @@ def parent_signup(request):
         form = ParentSignUp()
     return render(request, "registration/register.html", {'form': form})
 
+def parent_home(request):
+    return render(request, 'parent/home.html')
 
+
+def student_home(request):
+    return render(request, 'student/home.html')
 
 # def update_profile(request, id):
 #     # current_user = request.user
