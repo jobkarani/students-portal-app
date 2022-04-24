@@ -119,6 +119,34 @@ def delete_parent(request, user_id):
         messages.success(request, f'Parent deleted successfully!')
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+def student_signup(request):
+    # if request.user.is_authenticated:
+    #     return redirect('home')
+    if request.method == "POST":
+        form = StudentSignUp(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            return redirect('login')
+
+    else:
+        form = StudentSignUp()
+    return render(request, "registration/register.html", {'form': form})
+
+def parent_signup(request):
+    # if request.user.is_authenticated:
+    #     return redirect('home')
+    if request.method == "POST":
+        form = ParentSignUp(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            return redirect('login')
+
+    else:
+        form = ParentSignUp()
+    return render(request, "registration/register.html", {'form': form})
+
 
 
 # def update_profile(request, id):
