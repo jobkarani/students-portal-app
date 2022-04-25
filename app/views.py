@@ -205,19 +205,19 @@ def createStudent(request):
     return render(request, 'all-temps/student_form.html', {"form":form})
 
 def createUnit(request):
-    current_user = request.user
-    if current_user == 'is_student':
-        if request.method == 'POST':
-            form = UnitForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                return redirect('index')
-        else:
-            form = UnitForm()
-        print(form)
-        return render(request, 'all-temps/unit_form.html', {"form":form})
+    # current_user = request.user
+    # if current_user == 'is_student':
+    if request.method == 'POST':
+        form = UnitForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
     else:
-        return HttpResponse('You must be signed in as a student to perform this action.')
+        form = UnitForm()
+    print(form)
+    return render(request, 'all-temps/unit_form.html', {"form":form})
+    # else:
+    #     return HttpResponse('You must be signed in as a student to perform this action.')
 
 def viewUnits(request):
     units = Unit.objects.filter().all()
@@ -240,17 +240,17 @@ def removeUnit(request, slug):
         return HttpResponse('You must be signed in as a student to perform this action.')
 
 def createSem(request):
-    current_user = request.user
-    if current_user == 'is_student':
-        if request.method == 'POST':
-            form = SemesterForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                return redirect('index')
-        else:
-            form = SemesterForm()
+    # current_user = request.user
+    # if current_user == 'is_student':
+    if request.method == 'POST':
+        form = SemesterForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
     else:
-        return HttpResponse('You must be signed in as a student to perform this action.')
+        form = SemesterForm()
+    # else:
+    #     return HttpResponse('You must be signed in as a student to perform this action.')
     print(form)
     return render(request, 'all-temps/sem_form.html', {"form":form})
 
@@ -275,17 +275,17 @@ def removeSem(request, slug):
         return HttpResponse('You must be signed in as a student to perform this action.')
 
 def createResults(request):
-    current_user = request.user
-    if current_user == 'is_student':
-        if request.method == 'POST':
-            form = ResultsForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                return redirect('index')
-        else:
-            form = ResultsForm()
+    # current_user = request.user
+    # if current_user == 'is_student':
+    if request.method == 'POST':
+        form = ResultsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
     else:
-        return HttpResponse('You must be signed in as a student to perform this action.')
+        form = ResultsForm()
+    # else:
+    #     return HttpResponse('You must be signed in as a student to perform this action.')
     print(form)
     return render(request, 'all-temps/results_form.html', {"form":form})
 
@@ -293,18 +293,26 @@ def viewResults(request):
     marks = Results.objects.filter().all()
     print(marks)
     ctx ={
-        
         "marks":marks,
     }
-    return render(request, 'all-temps/results.html',ctx)
+    return render(request, 'all-temps/results.html' ,ctx)
+
+def viewPdfResults(request):
+    marks = Results.objects.filter().all()
+    print(marks)
+    ctx ={
+        "marks":marks,
+    }
+    return render(request, 'all-temps/result.html' ,ctx)
 
 def bar_chart(request):
     labels = []
     data = []
 
-    queryset = Results.objects.values('semester__semester_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
+    queryset = Results.objects.values('semester__semester_name','unit__unit_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
     for entry in queryset:
         labels.append(entry['semester__semester_name'])
+        labels.append(entry['unit__unit_name'])
         data.append(entry['result_marks'])
 
     return JsonResponse(data={
@@ -314,8 +322,8 @@ def bar_chart(request):
 
 
 def registerUnits(request):
-    current_user = request.user
-    if current_user == 'is_student':
+    # current_user = request.user
+    # if current_user == 'is_student':
         regUnitsForm = RegisterUnitsForm()
         if request.method == 'POST':
             regUnitsForm = RegisterUnitsForm(request.POST)
@@ -326,14 +334,14 @@ def registerUnits(request):
             print("Error wirth form")
         return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
     
-    else:
-        return HttpResponse('You must be signed in as a student to perform this action.')
+    # else:
+    #     return HttpResponse('You must be signed in as a student to perform this action.')
 
 class GeneratePdf(View):
      def get(self, request, *args, **kwargs):
          
         # getting the template
-        pdf = html_to_pdf('result.html')
+        pdf = html_to_pdf('all-temps/result.html')
          
          # rendering the template
         return HttpResponse(pdf, content_type='application/pdf')
