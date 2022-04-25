@@ -45,4 +45,5 @@ urlpatterns = [
     path('removeUnit/<slug>/', views.removeUnit, name='removeUnit'),
     path('result-chart/', views.bar_chart, name='bar_chart'),
     path('bar-chart/', views.bar_chart, name='bar_chart'),
+    path('pdf/', views.GeneratePdf,name='GeneratePdf'),
 ]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
