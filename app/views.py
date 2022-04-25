@@ -22,21 +22,6 @@ def options(request):
     return render(request, 'registration/options.html')
 
 
-# @login_required(login_url="/accounts/login/")
-# def create_profile(request):
-#     current_user = request.user
-#     title = "CreateProfile"
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             profile = form.save(commit=False)
-#             profile.user = current_user
-#             profile.save()
-#     else:
-#         form = ProfileForm()
-#     return render(request, 'all-temps/create_profile.html', {"form": form, "title": title})
-
-
 @login_required
 def profileStudent(request, id):
     student = User.objects.get(id=id)
@@ -165,34 +150,28 @@ def dashboard(request):
         return redirect('studentDash/')
 
 @login_required
-def studentDash(request):
-    current_user = request.user
-    profile = Student.objects.get(user_id=current_user.id)
-    return render(request, 'student/student_dashboard.html', { 'profile': profile})
-
-@login_required
 def lecturerDash(request):
     all_parents = User.objects.filter(is_parent=True).all()
     all_students = User.objects.filter(is_student=True).all()
     
     return render(request, 'lecturer/lecturer_dashboard.html', {"all_parents": all_parents, 'all_students': all_students})
 
-@login_required
-def parentDash(request):
-    current_user = request.user
-    profile = Parent.objects.get(user_id=current_user.id)
-    student = User.objects.filter(is_student=True).all()
-    student_profs = Student.objects.all()
-    parent = User.objects.all()
+# @login_required
+# def parentDash(request):
+#     current_user = request.user
+#     profile = Parent.objects.get(user_id=current_user.id)
+#     student = User.objects.filter(is_student=True).all()
+#     student_profs = Student.objects.all()
+#     parent = User.objects.all()
     
-    context = {
-        "student": student,
-        "parent": parent,
-        'profile': profile,
-        'student_profs':student_profs,
+#     context = {
+#         "student": student,
+#         "parent": parent,
+#         'profile': profile,
+#         'student_profs':student_profs,
     
-    }
-    return render(request, 'parent/parent_dashboard.html', context)
+#     }
+#     return render(request, 'parent/parent_dashboard.html', context)
 
 
 def search_student(request):
@@ -210,25 +189,6 @@ def search_student(request):
         message = 'You have not searched for any term'
         return render(request, 'parent/search.html', {"message": message, })
 
-# def update_profile(request, id):
-#     # current_user = request.user
-#     user = User.objects.get(id=id)
-#     profile = Profile.objects.get(user=user)
-#     form = UpdateProfileForm(instance=profile)
-#     if request.method == "POST":
-#         form = UpdateProfileForm(request.POST, request.FILES, instance=profile)
-#         if form.is_valid():
-
-#             profile = form.save(commit=False)
-#             profile.save()
-#             return redirect('profile')
-
-#     ctx = {
-#         "form": form,
-#         "user":user,
-#         "profile":profile,
-#         }
-#     return render(request, 'all-temps/update_profile.html', ctx)
 
 def createStudent(request):
     if request.method == 'POST':
@@ -242,15 +202,19 @@ def createStudent(request):
     return render(request, 'all-temps/student_form.html', {"form":form})
 
 def createUnit(request):
-    if request.method == 'POST':
-        form = UnitForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
+    current_user = request.user
+    if current_user == 'is_student':
+        if request.method == 'POST':
+            form = UnitForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('index')
+        else:
+            form = UnitForm()
+        print(form)
+        return render(request, 'all-temps/unit_form.html', {"form":form})
     else:
-        form = UnitForm()
-    print(form)
-    return render(request, 'all-temps/unit_form.html', {"form":form})
+        return HttpResponse('You must be signed in as a student to perform this action.')
 
 def viewUnits(request):
     units = Unit.objects.filter().all()
@@ -261,21 +225,29 @@ def viewUnits(request):
     return render(request, 'all-temps/units.html',ctx)
 
 def removeUnit(request, slug):
-    unit = get_object_or_404(Unit, unit_name=slug)
-    unit.delete()
-    ctx ={
-        "unit":unit,
-    }
-    return redirect('viewUnits')
+    current_user = request.user
+    if current_user == 'is_student':
+        unit = get_object_or_404(Unit, unit_name=slug)
+        unit.delete()
+        ctx ={
+            "unit":unit,
+        }
+        return redirect('viewUnits')
+    else:
+        return HttpResponse('You must be signed in as a student to perform this action.')
 
 def createSem(request):
-    if request.method == 'POST':
-        form = SemesterForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
+    current_user = request.user
+    if current_user == 'is_student':
+        if request.method == 'POST':
+            form = SemesterForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('index')
+        else:
+            form = SemesterForm()
     else:
-        form = SemesterForm()
+        return HttpResponse('You must be signed in as a student to perform this action.')
     print(form)
     return render(request, 'all-temps/sem_form.html', {"form":form})
 
@@ -288,21 +260,29 @@ def viewSems(request):
     return render(request, 'all-temps/semesters.html',ctx)
 
 def removeSem(request, slug):
-    sems = get_object_or_404(Semester, semester_name=slug)
-    sems.delete()
-    ctx ={
-        "sems":sems,
-    }
-    return redirect('viewSems')
+    current_user = request.user
+    if current_user == 'is_student':
+        sems = get_object_or_404(Semester, semester_name=slug)
+        sems.delete()
+        ctx ={
+            "sems":sems,
+        }
+        return redirect('viewSems')
+    else:
+        return HttpResponse('You must be signed in as a student to perform this action.')
 
 def createResults(request):
-    if request.method == 'POST':
-        form = ResultsForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
+    current_user = request.user
+    if current_user == 'is_student':
+        if request.method == 'POST':
+            form = ResultsForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('index')
+        else:
+            form = ResultsForm()
     else:
-        form = ResultsForm()
+        return HttpResponse('You must be signed in as a student to perform this action.')
     print(form)
     return render(request, 'all-temps/results_form.html', {"form":form})
 
@@ -331,12 +311,18 @@ def bar_chart(request):
 
 
 def registerUnits(request):
-    regUnitsForm = RegisterUnitsForm()
-    if request.method == 'POST':
-        regUnitsForm = RegisterUnitsForm(request.POST)
-        if regUnitsForm.is_valid():
-            regUnits = regUnitsForm.save(commit=True)
-            regUnits.save()
-            return redirect("/")
-        print("Error wirth form")
-    return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
+    current_user = request.user
+    if current_user == 'is_student':
+        regUnitsForm = RegisterUnitsForm()
+        if request.method == 'POST':
+            regUnitsForm = RegisterUnitsForm(request.POST)
+            if regUnitsForm.is_valid():
+                regUnits = regUnitsForm.save(commit=True)
+                regUnits.save()
+                return redirect("/")
+            print("Error wirth form")
+        return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
+    
+    else:
+        return HttpResponse('You must be signed in as a student to perform this action.')
+

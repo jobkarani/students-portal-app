@@ -29,10 +29,8 @@ urlpatterns = [
     path('parent/home/', views.parent_home, name='parent_home'),
     path('student/home/', views.student_home, name='student_home'),
     
-    path('studentDash/', app_views.studentDash, name='studentDash'),
     path('dashboard/', app_views.dashboard, name='dashboard'),
     path('lecturer_dashboard/', app_views.lecturerDash, name='lecturerDash'),
-    path('parentDash/', app_views.parentDash, name='parentDash'),
     path('search_jobseekers/', views.search_student, name='search_student'),
 
     path('createstudent/', views.createStudent, name='createStudent'),

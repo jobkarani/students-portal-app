@@ -60,9 +60,9 @@
                         <div class="search-box-outer">
                             <div class="dropdown">
                                 {%if user.is_authenticated%} {%if user.is_student%}
-                                <a href="{%url 'studentDash'%}" class="text-dark pr-2">DASHBOARD</a>
+                                <a href="/" class="text-dark pr-2">DASHBOARD</a>
                                 {%endif%} {%if user.is_parent%}
-                                <a href="{%url 'parentDash'%}" class="text-dark pr-2">DASHBOARD</a>
+                                <a href="/" class="text-dark pr-2">DASHBOARD</a>
                                 {%endif%}
                                 <a href="{% url 'logout'%}" class="text-dark pr-2">LOGOUT</a> {%else%}
                                 <a href="{%url 'login'%}" class="text-dark pr-2">LOGIN</a>   ||  
@@ -120,9 +120,9 @@
 
 
                                 {%if user.is_authenticated%} {%if user.is_student%}
-                                <li><a href="{%url 'studentDash'%}" class="text-dark pr-2">DASHBOARD</a></li>
+                                <li><a href="/" class="text-dark pr-2">DASHBOARD</a></li>
                                 {%endif%} {%if user.is_parent%}
-                                <li><a href="{%url 'parentDash'%}" class="text-dark pr-2">DASHBOARD</a></li>
+                                <li><a href="/" class="text-dark pr-2">DASHBOARD</a></li>
                                 {%endif%}
                                 <li> <a href="{% url 'logout'%}" class="text-dark pr-2">LOGOUT</a></li>
                                 {%else%}
