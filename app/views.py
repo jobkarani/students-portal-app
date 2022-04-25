@@ -5,16 +5,18 @@ from django.contrib import messages
 from .models import *
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
-from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.http import HttpResponse, Http404, HttpResponseRedirect, JsonResponse,HttpResponseNotFound
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from .forms import *
 from datetime import datetime as datetime
 from django.db.models import Sum
-from django.http import JsonResponse
 from django.http import HttpResponse
+# from django.core.files.storage import FileSystemStorage
 from django.views.generic import View
-from .process import html_to_pdf 
+from . import models
+from .process import render_to_pdf
+# from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -338,10 +340,12 @@ def registerUnits(request):
     #     return HttpResponse('You must be signed in as a student to perform this action.')
 
 class GeneratePdf(View):
-     def get(self, request, *args, **kwargs):
-         
-        # getting the template
-        pdf = html_to_pdf('all-temps/result.html')
-         
-         # rendering the template
+    def get(self, request, *args, **kwargs):
+        data = models.Results.objects.all().order_by('name')
+
+        ctx = {
+            "data":data,
+        }
+        print(data)
+        pdf = render_to_pdf('all-temps/result.html',ctx)
         return HttpResponse(pdf, content_type='application/pdf')
