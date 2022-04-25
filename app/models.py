@@ -26,7 +26,7 @@ class User(AbstractUser):
         self.delete()
 
 class Parent(models.Model):
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.OneToOneField(User, on_delete=models.PROTECT, primary_key=True)
     email = models.EmailField(max_length=256, null=True)
     phone = models.CharField(max_length=100)
 
@@ -49,7 +49,7 @@ class Student(models.Model):
         ('Female', 'Female'),
         ('Other', 'Other'),
     )
-    user = models.OneToOneField(User, on_delete=models.PROTECT, null=True)
+    user = models.OneToOneField(User, on_delete=models.PROTECT,primary_key=True)
     regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560etc',max_length=100,unique=False)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)

@@ -41,8 +41,10 @@ urlpatterns = [
     path('units/', views.viewUnits, name='viewUnits'),
     path('semesters/', views.viewSems, name='viewSems'),
     path('results/', views.viewResults, name='viewResults'),
+#     path('viewPdfResults/', views.viewPdfResults, name='viewPdfResults'),
     path('removeSem/<slug>/', views.removeSem, name='removeSem'),
     path('removeUnit/<slug>/', views.removeUnit, name='removeUnit'),
     path('result-chart/', views.bar_chart, name='bar_chart'),
     path('bar-chart/', views.bar_chart, name='bar_chart'),
+    path('pdf/', views.GeneratePdf.as_view(),name='GeneratePdf'),
 ]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
