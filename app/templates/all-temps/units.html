@@ -16,9 +16,9 @@
 
                     </div>
                     <div class="row">
-                        <div class="body col-4">
+                        <div class="body col-3">
                             <div class="card-title">
-                                <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Code</p>
+                                <p style="color: brown; font-size: large;font-weight: 900;">Unit Code</p>
                             {% for units in units %}
                                 <p> <span style="font: weight 900px; font-size:larger;">{{units.unit_code}}
                                     </span></p>
@@ -26,24 +26,34 @@
                             {% endfor %}
                         </div>
                         </div>
-                    <div class="body col-4">
+                    <div class="body col-3">
                         <div class="card-title">
-                            <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Name</p> 
+                            <p style="color: brown; font-size: large;font-weight: 900;">Unit Name</p> 
                         {% for units in units %}
                             <p> <span style="font: weight 900px; font-size:larger;">{{units.unit_name}}
                                 </span></p>
                             </p>
                         {% endfor %}
                     </div>
+                    </div>
+                    <div class="body col-3">
+                        <div class="card-title">
+                            <p style="color: brown; font-size: large;font-weight: 900;">Sem</p> 
+                        {% for units in units %}
+                            <p> <span style="font: weight 900px; font-size:larger;">{{units.semester}}
+                                </span></p>
+                            </p>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="body col-4">
+                <div class="body col-3">
                     <div class="card-title">
-                        <p style="color: brown; font-size: x-large;font-weight: 900;">Action</p> 
+                        <p style="color: brown; font-size: large;font-weight: 900;">Action</p> 
                     {% for units in units %}
-                    <div class="body col-4" >
+                    <div class="body col-4" style="margin-bottom: 2%;">
                         <a href="{% url 'removeUnit' units.unit_name %}" onclick="return confirm('Are you sure you want to delete this semester?')"
-                                    class="btn btn-outline-danger">
-                                    remove</a>
+                                    class="btn btn-outline-danger">Remove
+                                </a>
                     </div>
                     {% endfor %}
                     </div>

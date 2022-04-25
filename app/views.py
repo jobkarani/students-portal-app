@@ -201,8 +201,6 @@ def viewStudents(request):
     return render(request, 'all-temps/students.html',ctx)
 
 def createUnit(request):
-    # current_user = request.user
-    # if current_user == 'is_student':
     if request.method == 'POST':
         form = UnitForm(request.POST, request.FILES)
         if form.is_valid():
@@ -212,8 +210,6 @@ def createUnit(request):
         form = UnitForm()
     print(form)
     return render(request, 'all-temps/unit_form.html', {"form":form})
-    # else:
-    #     return HttpResponse('You must be signed in as a student to perform this action.')
 
 def viewUnits(request):
     units = Unit.objects.filter().all()
@@ -224,20 +220,14 @@ def viewUnits(request):
     return render(request, 'all-temps/units.html',ctx)
 
 def removeUnit(request, slug):
-    current_user = request.user
-    if current_user == 'is_student':
         unit = get_object_or_404(Unit, unit_name=slug)
         unit.delete()
         ctx ={
             "unit":unit,
         }
         return redirect('viewUnits')
-    else:
-        return HttpResponse('You must be signed in as a student to perform this action.')
 
 def createSem(request):
-    # current_user = request.user
-    # if current_user == 'is_student':
     if request.method == 'POST':
         form = SemesterForm(request.POST, request.FILES)
         if form.is_valid():
@@ -245,8 +235,6 @@ def createSem(request):
             return redirect('index')
     else:
         form = SemesterForm()
-    # else:
-    #     return HttpResponse('You must be signed in as a student to perform this action.')
     print(form)
     return render(request, 'all-temps/sem_form.html', {"form":form})
 
@@ -259,20 +247,14 @@ def viewSems(request):
     return render(request, 'all-temps/semesters.html',ctx)
 
 def removeSem(request, slug):
-    current_user = request.user
-    if current_user == 'is_student':
         sems = get_object_or_404(Semester, semester_name=slug)
         sems.delete()
         ctx ={
             "sems":sems,
         }
         return redirect('viewSems')
-    else:
-        return HttpResponse('You must be signed in as a student to perform this action.')
 
 def createResults(request):
-    # current_user = request.user
-    # if current_user == 'is_student':
     if request.method == 'POST':
         form = ResultsForm(request.POST, request.FILES)
         if form.is_valid():
@@ -280,8 +262,6 @@ def createResults(request):
             return redirect('index')
     else:
         form = ResultsForm()
-    # else:
-    #     return HttpResponse('You must be signed in as a student to perform this action.')
     print(form)
     return render(request, 'all-temps/results_form.html', {"form":form})
 
@@ -317,8 +297,7 @@ def bar_chart(request):
 
 
 def registerUnits(request):
-    # current_user = request.user
-    # if current_user == 'is_student':
+    
         regUnitsForm = RegisterUnitsForm()
         if request.method == 'POST':
             regUnitsForm = RegisterUnitsForm(request.POST)
@@ -329,8 +308,7 @@ def registerUnits(request):
             print("Error wirth form")
         return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
     
-    # else:
-    #     return HttpResponse('You must be signed in as a student to perform this action.')
+        return HttpResponse('You must be signed in as a student to perform this action.')
 
 class GeneratePdf(View):
     def get(self, request, *args, **kwargs):

@@ -9,7 +9,7 @@
             <div class="col-md-6" style="width: 100%; padding:10%;">
                 <div class="text-center">
                     <div class="title"></div>
-                    <div class="guide" >
+                    <div class="guide text-center" >
                         These are the requested results for the following units.
                     </div>
                     <hr />
@@ -20,7 +20,6 @@
                       <tr>
                         <th scope="col"></th>
                         <th scope="col">Student's Name</th>
-                        <th scope="col">Student's Reg-no</th>
                         <th scope="col">Unit Name</th>
                         <th scope="col">Unit Code</th>
                         <th scope="col">Marks</th>
@@ -31,8 +30,7 @@
                     {% for marks in data %}
                       <tr>
                         <th scope="row">1</th>
-                        <td>{{marks.student.user}}</td>
-                        <td>{{marks.student}}</td>
+                        <td>{{marks.user}}</td>
                         <td>{{marks.unit}}</td>
                         <td>{{marks.unit.unit_code}}</td>
                         <td>{{marks.marks}}</td>

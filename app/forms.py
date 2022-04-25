@@ -91,7 +91,7 @@ class UnitForm(forms.ModelForm):
 class ResultsForm(forms.ModelForm):
     class Meta:
         model = Results
-        fields = ['marks', 'unit', 'student', 'semester']      
+        fields = ['marks', 'unit', 'user', 'semester']      
 
 class RegisterUnitsForm(forms.ModelForm):
     class Meta:
