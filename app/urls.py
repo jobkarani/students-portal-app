@@ -34,6 +34,7 @@ urlpatterns = [
     path('search_jobseekers/', views.search_student, name='search_student'),
 
     path('createstudent/', views.createStudent, name='createStudent'),
+    path('viewStudent/', views.viewStudents, name='viewStudents'),
     path('createUnit/', views.createUnit, name='createUnit'),
     path('regUnit/', views.registerUnits, name='regUnit'),
     path('createSem/', views.createSem, name='createSem'),

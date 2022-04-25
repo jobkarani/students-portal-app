@@ -206,6 +206,14 @@ def createStudent(request):
     print(form)
     return render(request, 'all-temps/student_form.html', {"form":form})
 
+def viewStudents(request):
+    students = Student.objects.filter().all()
+    print(students)
+    ctx ={
+        "students":students,
+    }
+    return render(request, 'all-temps/students.html',ctx)
+
 def createUnit(request):
     # current_user = request.user
     # if current_user == 'is_student':

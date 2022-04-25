@@ -1,0 +1,34 @@
+{% extends 'all-temps/base.html' %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container" style="align-items:center; width:60%; margin-top: 10%;">
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6" style="width: 100%; padding:10%;">
+                
+                <div class="input">
+                    <div class="text-center">
+                        <div class="title"></div>
+                        <div class="guide">
+                            These are your Students.
+                        </div>
+                        <hr />
+
+                    </div>
+                    <div class="row">
+
+                        {% for students in students %}
+                        <div class="body col-6">
+                                <p> <span style="font: weight 900px; font-size:larger;">{{students.name}} {{students.regno}}
+                                    </span></p>
+                                </p>
+                        </div>
+                        {% endfor %}
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
