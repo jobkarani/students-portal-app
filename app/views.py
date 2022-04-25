@@ -12,6 +12,9 @@ from .forms import *
 from datetime import datetime as datetime
 from django.db.models import Sum
 from django.http import JsonResponse
+from django.http import HttpResponse
+from django.views.generic import View
+from .process import html_to_pdf 
 
 # Create your views here.
 
@@ -326,3 +329,11 @@ def registerUnits(request):
     else:
         return HttpResponse('You must be signed in as a student to perform this action.')
 
+class GeneratePdf(View):
+     def get(self, request, *args, **kwargs):
+         
+        # getting the template
+        pdf = html_to_pdf('result.html')
+         
+         # rendering the template
+        return HttpResponse(pdf, content_type='application/pdf')
