@@ -26,6 +26,9 @@ def index(requests):
 def options(request):
     return render(request, 'registration/options.html')
 
+def aboutUs(request):
+    return render(request, 'aboutus.html')
+
 
 @login_required
 def profileStudent(request, id):
@@ -161,23 +164,6 @@ def lecturerDash(request):
     
     return render(request, 'lecturer/lecturer_dashboard.html', {"all_parents": all_parents, 'all_students': all_students})
 
-# @login_required
-# def parentDash(request):
-#     current_user = request.user
-#     profile = Parent.objects.get(user_id=current_user.id)
-#     student = User.objects.filter(is_student=True).all()
-#     student_profs = Student.objects.all()
-#     parent = User.objects.all()
-    
-#     context = {
-#         "student": student,
-#         "parent": parent,
-#         'profile': profile,
-#         'student_profs':student_profs,
-    
-#     }
-#     return render(request, 'parent/parent_dashboard.html', context)
-
 
 def search_student(request):
     current_user = request.user
@@ -205,6 +191,14 @@ def createStudent(request):
         form = StudentForm()
     print(form)
     return render(request, 'all-temps/student_form.html', {"form":form})
+
+def viewStudents(request):
+    students = Student.objects.filter().all()
+    print(students)
+    ctx ={
+        "students":students,
+    }
+    return render(request, 'all-temps/students.html',ctx)
 
 def createUnit(request):
     # current_user = request.user

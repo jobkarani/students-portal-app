@@ -25,10 +25,11 @@
     }
 </style>
 <br><br>
+{% if request.user.is_student %}
 <div class="sidebar-nav mt-2 ms-5">
     <ul class="side-nav">
         <li class="nav-header">
-            <span style="font-size: x-large;font-weight: bold;">Dashboard</span>
+            <span style="font-size: x-large;font-weight: bold;">Student Dashboard</span>
         </li>
         
         <li class="has-children">
@@ -66,3 +67,41 @@
                         Results</span></a></li>
         </ul>
 </div>
+{% else %}
+<div class="sidebar-nav mt-2 ms-5">
+    <ul class="side-nav">
+        <li class="nav-header">
+            <span style="font-size: x-large;font-weight: bold;">Parent Dashboard</span>
+        </li>
+        
+        <li class="has-children">
+            <a href="#"><i class="fa fa-file-text"></i> <span>Student Semesters</span> <i class="fa fa-angle-right arrow"></i></a>
+            <ul class="child-nav">
+                <li><a href="{% url 'viewSems' %}"><i class="fa fa fa-server"></i> <span>View
+                    Semesters</span></a></li>
+            </ul>
+        </li>
+        <li class="has-children">
+            <a href=""><i class="fa fa-users"></i> <span>Students</span> <i class="fa fa-angle-right arrow"></i></a>
+            <ul class="child-nav">
+                <li><a href="{% url 'viewStudents' %}"><i class="fa fa-bars"></i> <span>View Students</span></a></li>
+            </ul>
+        </li>
+        <li class="has-children">
+            <a href="#"><i class="fa fa-file-text"></i> <span>Units</span> <i class="fa fa-angle-right arrow"></i></a>
+            <ul class="child-nav">
+                <li><a href="{% url 'viewUnits' %}"><i class="fa fa fa-server"></i> <span>View
+                    Units</span></a></li>
+               
+    </ul>
+    </li>
+    
+    <li class="has-children">
+        <a href="#"><i class="fa fa-info-circle"></i> <span>Results</span> <i class="fa fa-angle-right arrow"></i></a>
+        <ul class="child-nav">
+            <li><a href="{% url 'viewResults' %}"><i class="fa fa fa-server"></i> <span>View
+                        Results</span></a></li>
+        </ul>
+</div>
+
+{% endif %}

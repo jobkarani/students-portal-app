@@ -12,10 +12,7 @@ from django import urls
 urlpatterns = [
     path('', views.index, name='index'),
     path('register/options/', views.options, name='options'),
-    # path('create_profile/', views.create_profile, name='create_profile'),
-    # path('update_profile/<int:id>', views.update_profile, name='update_profile'),
-    # path('profile/', views.parent, name='parent'),
-    # path('accounts/profile/', views.parent, name='parent'),
+    path('aboutus/', views.aboutUs, name='aboutUs'),
     path('student/profile/', views.profileStudent, name='profileStudent'),
     path('student/profile/<int:id>',
          views.profileStudent, name='profileStudent'),
@@ -34,6 +31,7 @@ urlpatterns = [
     path('search_jobseekers/', views.search_student, name='search_student'),
 
     path('createstudent/', views.createStudent, name='createStudent'),
+    path('viewStudent/', views.viewStudents, name='viewStudents'),
     path('createUnit/', views.createUnit, name='createUnit'),
     path('regUnit/', views.registerUnits, name='regUnit'),
     path('createSem/', views.createSem, name='createSem'),

@@ -41,7 +41,7 @@
                                 </ul>
                             </li>
                             </li>
-                            <li><a class="text-dark" href="">About us</a></li>
+                            <li><a class="text-dark" href="{% url 'aboutUs'%}">About us</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -86,7 +86,7 @@
         <div class="auto-container clearfix">
             <!--Logo-->
             <div class="logo pull-left">
-                <a href="/" class="img-responsive"><img src="{%static 'photos/home.svg' %}" alt="" title="" height="60" width="70"></a>
+                <a href="/" class="img-responsive"><img src="https://cdn.pixabay.com/photo/2013/07/13/12/43/kids-160168__340.png" alt="" title="" height="60" width="70"></a>
             </div>
 
             <!--Right Col-->
@@ -116,7 +116,7 @@
                             <!-- <li class=""><a href="#">About</a> -->
                             </li>
 
-                            <li><a class="text-dark" href="">About Us</a>
+                            <li><a class="text-dark" href="{% url 'aboutUs'%}">About Us</a>
 
 
                                 {%if user.is_authenticated%} {%if user.is_student%}
