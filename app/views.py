@@ -305,10 +305,9 @@ def bar_chart(request):
     labels = []
     data = []
 
-    queryset = Results.objects.values('semester__semester_name','unit__unit_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
+    queryset = Results.objects.values('semester__semester_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
     for entry in queryset:
         labels.append(entry['semester__semester_name'])
-        labels.append(entry['unit__unit_name'])
         data.append(entry['result_marks'])
 
     return JsonResponse(data={

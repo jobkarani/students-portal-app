@@ -1,68 +1,46 @@
+<style>
+    td{
+        text-align: center;
+    }
+</style>
 <div class="container" style="align-items:center; width:60%; margin-top: 10%;">
     <div class="card">
         <div class="row">
             <div class="col-md-6" style="width: 100%; padding:10%;">
-                
-                <div class="input">
-                    <div class="text-center">
-                        <div class="title"></div>
-                        <div class="guide" >
-                            These are your results for the following units.
-                        </div>
-                        <hr />
+                <div class="text-center">
+                    <div class="title"></div>
+                    <div class="guide" >
+                        These are the requested results for the following units.
+                    </div>
+                    <hr />
 
-                    </div>
-                    <div class="row">
-                        <div class="body col-3">
-                            <div class="card-title">
-                                <p style="color: brown; font-size: x-large;font-weight: 900;">Unit Name</p>
-                            {% for marks in marks %}
-                                <p> <span style="font: weight 900px; font-size:larger;">{{marks.unit}}
-                                    </span></p>
-                                </p>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="body col-3">
-                        <div class="card-title">
-                            <p style="color: brown; font-size: x-large;font-weight: 900;">Marks</p>
-                        {% for marks in marks %}
-                            <p> <span style="font: weight 900px; font-size:larger;">{{marks.marks}}
-                                </span></p>
-                            </p>
-                        {% endfor %}
-                    </div>
                 </div>
-                <div class="body col-3">
-                    <div class="card-title">
-                        <p style="color: brown; font-size: x-large;font-weight: 900;">Semester</p>
-                    {% for marks in marks %}
-                        <p> <span style="font: weight 900px; font-size:larger;">{{marks.semester}}
-                            </span></p>
-                        </p>
-                    {% endfor %}
-                </div>
-                </div>
-                <div class="body col-3">
-                    <div class="card-title">
-                        <p style="color: brown; font-size: x-large;font-weight: 900;">Student</p>
-                    {% for marks in marks %}
-                        <p> <span style="font: weight 900px; font-size:larger;">{{marks.student}}
-                            </span></p>
-                        </p>
-                    {% endfor %}
-                </div>
-                </div>  
-
-                <div class="row">
-                    <div class="col-12">
-                        <div id="container" style="width: 75%;">
-                            <canvas id="bar-chart" data-url="{% url 'bar_chart' %}"></canvas>
-                          </div>
-                    </div>
-                </div>
-                </div>
-            </div>
+                <table class="tabletable  table-responsive">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Student's Name</th>
+                        <th scope="col">Student's Reg-no</th>
+                        <th scope="col">Unit Name</th>
+                        <th scope="col">Unit Code</th>
+                        <th scope="col">Marks</th>
+                        <th scope="col">Semester</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for marks in data %}
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>{{marks.student.user}}</td>
+                        <td>{{marks.student}}</td>
+                        <td>{{marks.unit}}</td>
+                        <td>{{marks.unit.unit_code}}</td>
+                        <td>{{marks.marks}}</td>
+                        <td>{{marks.semester}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
         </div>
     </div>
 </div>
