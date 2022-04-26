@@ -7,9 +7,9 @@
   <meta charset="utf-8" />
 
   {% if title %}
-  <title>Students Portal- {{title}}</title>
+  <title>Cornerstone High School- {{title}}</title>
   {% else %}
-  <title>Students Portal</title>
+  <title>Cornerstone High School</title>
   <link rel="icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2013/07/12/12/17/check-145512__340.png" />
   {% endif %}
   {% block styles %}
@@ -29,6 +29,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Alegreya&family=Hurricane&family=Inter&family=Lora&family=Montserrat:wght@400;700&family=Nunito:wght@200&family=Open+Sans&family=Poppins:wght@300;400&family=Quicksand&family=Raleway:wght@300&family=Roboto&family=Roboto+Slab:wght@300;400&family=Source+Sans+Pro&display=swap"
     rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css-try/css/responsive.css' %}">
   <link rel="stylesheet" href="{% static 'css-try/css/styles.css' %}">
   <script src="https://kit.fontawesome.com/3af6dccc22.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
@@ -50,7 +52,7 @@
 <body>
   {% include 'navbar.html' %}
                   <div class="row">
-                  <div class="col-4" style="background-color: rgb(141, 141, 192); ">
+                  <div class="col-4" style="background-color: #B4ECE3; ">
                       <div class="sidebar-content">
                           {% include 'sidenav.html' %}
                       </div>

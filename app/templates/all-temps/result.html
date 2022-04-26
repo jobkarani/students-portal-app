@@ -18,7 +18,6 @@
                 <table class="tabletable  table-responsive">
                     <thead>
                       <tr>
-                        <th scope="col"></th>
                         <th scope="col">Student's Name</th>
                         <th scope="col">Unit Name</th>
                         <th scope="col">Unit Code</th>
@@ -29,7 +28,6 @@
                     <tbody>
                     {% for marks in data %}
                       <tr>
-                        <th scope="row">1</th>
                         <td>{{marks.user}}</td>
                         <td>{{marks.unit}}</td>
                         <td>{{marks.unit.unit_code}}</td>
