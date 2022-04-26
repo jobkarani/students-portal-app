@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
 
-  {%if title%}
-
-  <title>{{title}}</title>
-
-  {%endif%}
+    {% if title %}
+    <title>Cornerstone High School {{title}}</title>
+    {% else %}
+    <title>Cornerstone High School</title>
+    <link rel="icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2013/07/12/12/17/check-145512__340.png" />
+    {% endif %}
 
   {% block styles %}
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
