@@ -36,12 +36,12 @@ class Parent(models.Model):
     def __str__(self):
         return self.user.username
         
-class Semester(models.Model):
-    semester_name   =   models.CharField(help_text='Eg- 1.1,2.2,4.1,5.2 etc', max_length=100) 
+class Term(models.Model):
+    term_name   =   models.CharField(help_text='Eg-Term 1, Term 2, Term 3 etc', max_length=100) 
     creation_date =   models.DateTimeField(auto_now=False, auto_now_add=True)
 
     def __str__(self):
-        return self.semester_name
+        return self.term_name
 
 class Student(models.Model):
     select_gender = (
@@ -49,11 +49,11 @@ class Student(models.Model):
         ('Female', 'Female'),
         ('Other', 'Other'),
     )
-    user = models.ForeignKey(User,on_delete=models.PROTECT,primary_key=True, unique=False)
-    regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560etc',max_length=100,unique=False)
+    user = models.ForeignKey(User,on_delete=models.CASCADE,unique=False)
+    regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560 etc',max_length=100,unique=False)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE,null=True)
+    term = models.ForeignKey(Term, on_delete=models.CASCADE,null=True)
     # unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -63,7 +63,7 @@ class Student(models.Model):
 class Unit(models.Model):
     unit_name = models.CharField(max_length=100)
     unit_code = models.IntegerField()
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    term = models.ForeignKey(Term, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.unit_name
@@ -73,7 +73,7 @@ class Results(models.Model):
     name =models.CharField(max_length=100)
     marks = models.IntegerField()
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    term = models.ForeignKey(Term, on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE, null=True)
 
     def __str__(self):

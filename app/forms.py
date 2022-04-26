@@ -66,21 +66,21 @@ class StudentForm(forms.ModelForm):
         
 
 
-class SemesterForm(forms.ModelForm):
+class TermForm(forms.ModelForm):
     class Meta:
-        model = Semester
+        model = Term
         fields = '__all__'
         
 
 class UnitForm(forms.ModelForm):
     class Meta:
         model = Unit
-        fields = ['unit_name', 'unit_code', 'semester']
+        fields = ['unit_name', 'unit_code', 'term']
         
 class ResultsForm(forms.ModelForm):
     class Meta:
         model = Results
-        fields = ['marks', 'unit', 'user', 'semester']      
+        fields = ['marks', 'unit', 'user', 'term']      
 
 class RegisterUnitsForm(forms.ModelForm):
     class Meta:
