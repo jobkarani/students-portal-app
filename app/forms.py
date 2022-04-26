@@ -51,17 +51,6 @@ class StudentSignUp(UserCreationForm):
 
         return student
 
-class UpdateParentProfile(forms.ModelForm):
-    class Meta:
-        model = Parent
-        fields = '__all__'
-
-class UpdateStudentProfile(forms.ModelForm):
-
-    class Meta:
-        model = Student
-        fields = ('regno', 'gender', 'email',
-                  'semester')
 
 class UpdateUserProfile(forms.ModelForm):
     email = forms.EmailField()
