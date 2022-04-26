@@ -1,23 +1,211 @@
-{%extends 'slider-base.html'%} {% block content %} {{block.super}}
-<div class="container" style="align-items:center; width:60%; margin-top: 10%;">
-    <div class="card">
-        <div class="row">
-            <div class="col-md-6" style="width: 100%; padding:10%;">
-                
-                <div class="input">
-                    <div class="text-center">
-                        <div class="title"></div>
-                        <hr>
-                        <div class="guide" style="margin-top: 5%;margin-bottom: 5%;color: brown;font-size: xx-large;font-weight: 600;">
-                            Welcome to Cornerstone High School
-                        </div>
-                        <hr />
 
-                    </div>
-                </div>
-                </div>
-            </div>
+  
+{% extends 'slider-base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% block content%}
+{{block.super}}
+
+
+
+<section class="main-slider">
+
+  <div class="main-slider-carousel owl-carousel owl-theme">
+
+    <div class="slide" style="background-image:url('https://cdn.pixabay.com/photo/2020/02/08/09/52/chalk-4829602__340.jpg')">
+      <div class="auto-container">
+        <div class="content clearfix">
+          <div class="title">Cornerstone High School</div>
+          <h1>Grow Your Grades</h1>
+          <div class="text">OUR TEACHING STAFF COMPRISES TOP GRADE PROFESSIONALS.</div>
+          <div class="link-box">
+            <a href="/" class="theme-btn btn-style-one">Learn More</a> <a href="{%url 'aboutUs'%}"
+              class="theme-btn btn-style-two">About Us</a>
+          </div>
         </div>
+      </div>
     </div>
+
+    <div class="slide" style="background-image:url('https://cdn.pixabay.com/photo/2018/10/22/18/02/teacher-3765909__340.jpg')">
+      <div class="auto-container">
+        <div class="content centered clearfix">
+          <div class="title">Cornerstone High School</div>
+          <h1>Find The Best Carriculum</h1>
+          <div class="text">WE ARE MAKING EVERY STUDENT'S FUTURE BETTER.</div>
+          <div class="link-box">
+            <a href="/" class="theme-btn btn-style-one">Learn More</a> <a href="{%url 'aboutUs'%}"
+              class="theme-btn btn-style-two">About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background-image:url('https://cdn.pixabay.com/photo/2015/10/18/19/04/graduation-995042__340.jpg')">
+      <div class="auto-container">
+        <div class="content clearfix">
+          <div class="title">Cornerstone High School</div>
+          <h1>A Conducive Environment</h1>
+          <div class="text">FOR STUDENTS TO LEARN AND GROW.</div>
+          <div class="link-box">
+            <a href="/" class="theme-btn btn-style-one">Learn More</a> <a href="{%url 'aboutUs'%}"
+              class="theme-btn btn-style-two">About Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="about-section-two">
+  <div class="auto-container">
+    <div class="row clearfix">
+      <!--Column-->
+      <div class="column col-lg-7 col-md-12 col-sm-12">
+        <div class="about-content-box">
+          <div class="sec-title">
+            <h2>About our School</h2>
+          </div>
+          <h4><span class="number">30</span> Years of producing top-tier students</h4>
+          <div class="text">We pride ourselves in carrying the academic excellence torch high by pitching our tent at the heart of our almighty God by a strong belief and conviction of our three pillars namely: – The fear of God, Discipline and Hard Work.</div>
+          <!--Awards-->
+
+
+        </div>
+      </div>
+
+      <!--Column-->
+      <div class="column col-lg-5 col-md-12 col-sm-12">
+        <div class="image-box">
+          <figure class="image">
+            <img src="https://cdn.pixabay.com/photo/2016/11/14/03/16/book-1822474__340.jpg" alt="" />
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fluid-section-one">
+  <div class="outer-container clearfix">
+
+    <!--Image Column-->
+    <div class="image-column" style="background-image:url('https://cdn.pixabay.com/photo/2017/07/31/11/21/people-2557399__340.jpg');">
+      <figure class="image-box"><img src="https://cdn.pixabay.com/photo/2015/07/31/11/45/library-869061__340.jpg" alt=""></figure>
+    </div>
+
+    <!--Content Column-->
+    <div class="content-column">
+      <div class="inner-column">
+        <h2>Get to know more about our school</h2>
+        <div class="text">The school assures secure, safe and comfortable boarding facilities. Dormitories are kept in hygienic conditions by competent and dedicated matrons who ensure comfort and care of learners. They also teach them important life skills such as taking care of personal property, hygiene and responsibility. </div>
+        <div class="row clearfix">
+
+          <!--Column-->
+          <div class="column col-lg-6 col-md-6 col-sm-12">
+            <!--Featured Block-->
+            <div class="featured-block">
+              <div class="feature-inner">
+                <div class="icon-box">
+                  <span class="icon"> <i class="fas fa-home"></i></span>
+                </div>
+                <h3>our great <br> facilities</h3>
+              </div>
+            </div>
+          </div>
+          <div class="column col-lg-6 col-md-6 col-sm-12">
+            <!--Featured Block-->
+            <div class="featured-block">
+              <div class="feature-inner">
+                <div class="icon-box">
+                  <span class="icon "><i class="fas fa-book"></i></span>
+                </div>
+                <h3>Our <br> classes</h3>
+              </div>
+            </div>
+          </div>
+          <!--Column-->
+          <div class="column col-lg-6 col-md-6 col-sm-12">
+            <!--Featured Block-->
+            <div class="featured-block">
+              <div class="feature-inner">
+                <div class="icon-box">
+                  <span class="icon"><i class="fas fa-flask"></i></span>
+                </div>
+                <h3>science <br>labs</h3>
+              </div>
+            </div>
+          </div>
+          <!--Column-->
+          <div class="column col-lg-6 col-md-6 col-sm-12">
+            <!--Featured Block-->
+            <div class="featured-block">
+              <div class="feature-inner">
+                <div class="icon-box">
+                  <span class="icon"><i class="fas fa-burger"></i></span>
+                </div>
+                <h3>delicious <br> meals</h3>
+              </div>
+            </div>
+          </div>
+          <!--Column-->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="foot-cont mt-5">
+  <footer class="text-center text-dark text-lg-start " style="background-color:  #e6f0f9;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">
+              StudentPortal
+            </h6>
+            <p>
+            Visit the dashboard to access our school's portal. You will find different functionalities depending on how you've registered.For parents, they can access the parents dashboard whereby the can be able to view our students list and performance. For students they'll access the students dashboard whereby they can register and upload their results once verified by the admin.
+            </p>
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+            <p>
+              <a href="/" class="text-dark">Home</a>
+            </p>
+ 
+          </div>
+          <!-- Grid column -->
+
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <hr class="w-100 clearfix d-md-none" />
+
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+            <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+            <p><i class="fas fa-home mr-3"></i> Thika Road, Juja, Nairobi</p>
+            <p><i class="fas fa-envelope mr-3"></i> StudentPortal@gmail.com</p>
+            <p><i class="fas fa-phone mr-3"></i> +254 *** ***</p>
+            <p><i class="fas fa-print mr-3"></i> +254 *** ***</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+  </footer>
 </div>
-{% endblock %}
+{%endblock%}
