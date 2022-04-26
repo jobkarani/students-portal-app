@@ -106,17 +106,17 @@ def removeUnit(request, slug):
 
 def createSem(request):
     if request.method == 'POST':
-        form = SemesterForm(request.POST, request.FILES)
+        form = TermForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('createSem')
     else:
-        form = SemesterForm()
+        form = TermForm()
     print(form)
     return render(request, 'all-temps/sem_form.html', {"form":form})
 
 def viewSems(request):
-    sems = Semester.objects.filter().all()
+    sems = Term.objects.filter().all()
     print(sems)
     ctx ={
         "sems":sems,
@@ -124,7 +124,7 @@ def viewSems(request):
     return render(request, 'all-temps/semesters.html',ctx)
 
 def removeSem(request, slug):
-        sems = get_object_or_404(Semester, semester_name=slug)
+        sems = get_object_or_404(Term, term_name=slug)
         sems.delete()
         ctx ={
             "sems":sems,
@@ -162,9 +162,9 @@ def bar_chart(request):
     labels = []
     data = []
 
-    queryset = Results.objects.values('semester__semester_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
+    queryset = Results.objects.values('term__term_name').annotate(result_marks=Sum('marks')).order_by('-result_marks')
     for entry in queryset:
-        labels.append(entry['semester__semester_name'])
+        labels.append(entry['term__term_name'])
         data.append(entry['result_marks'])
 
     return JsonResponse(data={
