@@ -1,5 +1,5 @@
 from datetime import datetime
-import pandas
+import re
 from django.views.generic import ListView
 from django.contrib import messages
 from .models import *
@@ -28,6 +28,9 @@ def options(request):
 
 def aboutUs(request):
     return render(request, 'aboutus.html')
+
+def dashboard(request):
+    return render (request,'all-temps/dashboard.html')
 
 
 @login_required
@@ -147,15 +150,7 @@ def parent_home(request):
 def student_home(request):
     return render(request, 'student/home.html')
 
-@login_required
-def dashboard(request):
-    current = request.user
-    if current.is_parent:
-        return redirect('parentDash/')
-    elif current.is_lecturer:
-        return redirect('lecturerdashboard')
-    else:
-        return redirect('studentDash/')
+
 
 @login_required
 def lecturerDash(request):
@@ -186,7 +181,7 @@ def createStudent(request):
         form = StudentForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('createStudent')
     else:
         form = StudentForm()
     print(form)
@@ -205,7 +200,7 @@ def createUnit(request):
         form = UnitForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('createUnit')
     else:
         form = UnitForm()
     print(form)
@@ -232,7 +227,7 @@ def createSem(request):
         form = SemesterForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('createSem')
     else:
         form = SemesterForm()
     print(form)
@@ -259,7 +254,7 @@ def createResults(request):
         form = ResultsForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('createResults')
     else:
         form = ResultsForm()
     print(form)
@@ -297,7 +292,6 @@ def bar_chart(request):
 
 
 def registerUnits(request):
-    
         regUnitsForm = RegisterUnitsForm()
         if request.method == 'POST':
             regUnitsForm = RegisterUnitsForm(request.POST)
@@ -308,8 +302,6 @@ def registerUnits(request):
             print("Error wirth form")
         return render(request, "all-temps/regunits.html", {"form":regUnitsForm})
     
-        return HttpResponse('You must be signed in as a student to perform this action.')
-
 class GeneratePdf(View):
     def get(self, request, *args, **kwargs):
         data = models.Results.objects.all().order_by('name')

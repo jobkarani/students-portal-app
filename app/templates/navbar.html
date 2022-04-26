@@ -59,10 +59,11 @@
                         <!--Search Box-->
                         <div class="search-box-outer">
                             <div class="dropdown">
-                                {%if user.is_authenticated%} {%if user.is_student%}
-                                <a href="/" class="text-dark pr-2">DASHBOARD</a>
+                                {%if user.is_authenticated%} 
+                                {%if user.is_student%}
+                                <a href="{% url 'dashboard' %}" class="text-dark pr-2">DASHBOARD</a>
                                 {%endif%} {%if user.is_parent%}
-                                <a href="/" class="text-dark pr-2">DASHBOARD</a>
+                                <a href="{% url 'dashboard' %}" class="text-dark pr-2">DASHBOARD</a>
                                 {%endif%}
                                 <a href="{% url 'logout'%}" class="text-dark pr-2">LOGOUT</a> {%else%}
                                 <a href="{%url 'login'%}" class="text-dark pr-2">LOGIN</a>   ||  
@@ -120,9 +121,9 @@
 
 
                                 {%if user.is_authenticated%} {%if user.is_student%}
-                                <li><a href="/" class="text-dark pr-2">DASHBOARD</a></li>
+                                <li><a href="{% url 'dashboard' %}" class="text-dark pr-2">DASHBOARD</a></li>
                                 {%endif%} {%if user.is_parent%}
-                                <li><a href="/" class="text-dark pr-2">DASHBOARD</a></li>
+                                <li><a href="{% url 'dashboard' %}" class="text-dark pr-2">DASHBOARD</a></li>
                                 {%endif%}
                                 <li> <a href="{% url 'logout'%}" class="text-dark pr-2">LOGOUT</a></li>
                                 {%else%}

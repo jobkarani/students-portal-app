@@ -49,7 +49,7 @@ class Student(models.Model):
         ('Female', 'Female'),
         ('Other', 'Other'),
     )
-    user = models.OneToOneField(User, on_delete=models.PROTECT,primary_key=True, unique=False)
+    user = models.ForeignKey(User,on_delete=models.CASCADE, unique=False)
     regno = models.CharField(help_text='Eg- sct-121,sct-220,sct-560etc',max_length=100,unique=False)
     email = models.EmailField()
     gender = models.CharField(max_length=8, choices=select_gender)
