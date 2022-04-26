@@ -32,93 +32,6 @@ def aboutUs(request):
 def dashboard(request):
     return render (request,'all-temps/dashboard.html')
 
-
-@login_required
-def profileStudent(request, id):
-    student = User.objects.get(id=id)
-    profile = Student.objects.get(user_id=id)  # get profile
-    return render(request, "student/student.html", {"student": student, "profile": profile})
-
-@login_required
-def update_student_profile(request):
-    current_user = request.user
-    profile = Student.objects.get(user_id=current_user.id)
-    if request.method == 'POST':
-        user_form = UpdateUserProfile(
-            request.POST, request.FILES, instance=request.user)
-        student_form = UpdateStudentProfile(
-            request.POST, request.FILES, instance=request.user.student)
-        if user_form.is_valid() and student_form.is_valid():
-            user_form.save()
-            student_form.save()
-            messages.success(
-                request, 'Your Profile account has been updated successfully')
-            return redirect('profileStudent')
-    else:
-        user_form = UpdateUserProfile(instance=request.user)
-        student_form = UpdateStudentProfile(
-            instance=request.user.student)
-    params = {
-        'user_form': user_form,
-        'student_form': student_form,
-        'profile': profile
-    }
-    return render(request, 'student/update_student.html', params)
-
-@login_required
-def delete_student(request, user_id):
-    student = Student.objects.get(pk=user_id)
-    if student:
-        student.delete_user()
-        messages.success(request, f'User deleted successfully!')
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
-@login_required
-def parentProfile(request):
-    parent = request.user
-    profile = Parent.objects.get(user_id=parent.id)  # get profile
-    profile = Parent.objects.filter(
-        user_id=parent.id).first()  # get profile
-    context = {
-        "parent": parent,
-        'profile': profile
-    }
-    return render(request, 'parent/parent.html', context)
-
-@login_required
-def update_parent_profile(request):
-    current_user = request.user
-    profile = Parent.objects.get(
-        user_id=current_user.id)  # get profile
-    if request.method == 'POST':
-        u_form = UpdateUserProfile(
-            request.POST, request.FILES, instance=request.user)
-        p_form = UpdateParentProfile(
-            request.POST, request.FILES, instance=request.user.parent)
-        if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
-            messages.success(
-                request, 'Your Profile account has been updated successfully')
-            return redirect('profile')
-    else:
-        u_form = UpdateUserProfile(instance=request.user)
-        p_form = UpdateParentProfile(instance=request.user.parent)
-    context = {
-        'u_form': u_form,
-        'p_form': p_form,
-        'profile': profile
-    }
-    return render(request, 'parent/update_parent.html', context)
-
-@login_required
-def delete_parent(request, user_id):
-    parent = Parent.objects.get(pk=user_id)
-    if parent:
-        parent.delete_user()
-        messages.success(request, f'Parent deleted successfully!')
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-
 def student_signup(request):
     if request.method == "POST":
         form = StudentSignUp(request.POST)
@@ -143,37 +56,6 @@ def parent_signup(request):
         form = ParentSignUp()
     return render(request, "django_registration/registration_form.html", {'form': form})
 
-def parent_home(request):
-    return render(request, 'parent/home.html')
-
-
-def student_home(request):
-    return render(request, 'student/home.html')
-
-
-
-@login_required
-def lecturerDash(request):
-    all_parents = User.objects.filter(is_parent=True).all()
-    all_students = User.objects.filter(is_student=True).all()
-    
-    return render(request, 'lecturer/lecturer_dashboard.html', {"all_parents": all_parents, 'all_students': all_students})
-
-
-def search_student(request):
-    current_user = request.user
-    profile = Parent.objects.get(user_id=current_user.id)
-    if 'user' in request.GET and request.GET["user"]:
-        search_term = request.GET.get("user")
-        searched_students = Student.search_students_by_user(
-            search_term)
-        message = f"{search_term}"
-
-        return render(request, 'parent/search.html', {"message": message, "students": searched_students, 'profile': profile})
-
-    else:
-        message = 'You have not searched for any term'
-        return render(request, 'parent/search.html', {"message": message, })
 
 
 def createStudent(request):
